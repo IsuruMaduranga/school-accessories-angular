@@ -94,33 +94,33 @@ export class ProductDataService {
   }
 
   getAll(): Observable<Product[]> {
-    return this.http.get<Product[]>('http://localhost:8080/admin/get-products');
+    return this.http.get<Product[]>('http://localhost:8086/admin/get-products');
   }
 
   addProduct(newProduct: Product): Observable<any> {
     return this.http.post(
-      'http://localhost:8080/admin/add-product',
+      'http://localhost:8086/admin/add-product',
       newProduct
     );
   }
 
   update(newProduct: Product) {
     return this.http.put(
-      'http://localhost:8080/admin/update-product',
+      'http://localhost:8086/admin/update-product',
       newProduct
     );
   }
 
   delete(pid: string): Observable<any> {
-    console.log('http://localhost:8080/admin/delete-product/' + pid);
+    console.log('http://localhost:8086/admin/delete-product/' + pid);
     return this.http.delete(
-      'http://localhost:8080/admin/delete-product/' + pid
+      'http://localhost:8086/admin/delete-product/' + pid
     );
   }
 
   get(pid: string): Observable<Product> {
     return this.http.get<Product>(
-      'http://localhost:8080/admin/get-product/' + pid
+      'http://localhost:8086/admin/get-product/' + pid
     );
   }
 }
