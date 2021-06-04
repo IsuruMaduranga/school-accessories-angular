@@ -12,18 +12,21 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="category">Price :</label>
+                    <input type="text" class="form-control" placeholder="price" name="price" #price ngModel [(ngModel)]="product.price" required>
+                </div>
+                <div class="form-group">
                     <label for="category">Category :</label>
                     <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
                         <option value=""></option>
-                        <option *ngFor="let c of categories$">
+                        <option *ngFor="let c of categories">
                             {{ c }}
                         </option>
                     </select>
                 </div>
-
                 <div class="form-group">
-                    <label for="category">Price :</label>
-                    <input type="text" class="form-control" placeholder="price" name="price" #price ngModel [(ngModel)]="product.price" required>
+                    <label for="description">Product description :</label>
+                    <input #description="ngModel" [(ngModel)]="product.description" name="description" id="description" type="text" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="category">Product Image :</label>

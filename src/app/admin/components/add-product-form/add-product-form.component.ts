@@ -11,13 +11,14 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-product-form.component.css'],
 })
 export class AddProductFormComponent implements OnInit {
-  categories: Array<String> = [];
+  categories: any;
   product: Product = {
-    $key: '',
+    product_id: 0,
     title: '',
     price: 0,
-    category: '',
-    imageUrl: '',
+    category_id: 0,
+    image: '',
+    descript: '',
   };
   fileToUpload: any;
 
@@ -27,21 +28,20 @@ export class AddProductFormComponent implements OnInit {
     private route: ActivatedRoute,
     private categoryService: CategoryService,
     private productDataService: ProductDataService
-  ) {
-    this.categories = categoryService.getAll();
+  ) {}
+
+  ngOnInit(): void {
+    this.categoryService.getAll().subscribe((categories) => {
+      this.categories = categories;
+    });
   }
 
-  ngOnInit(): void {}
-
   addProduct(product: any) {
-    // this.product.$key = (
-    //   this.productDataService.getAll().length + 1
-    // ).toString();
     this.product.title = product.title;
     this.product.price = product.price;
-    this.product.category = product.category;
-    this.product.imageUrl = this.imageUrl;
-    console.log(this.product);
+    this.product.category_id = product.category;
+    this.product.descript = product.description;
+    this.product.image = this.imageUrl;
 
     Swal.fire({
       title: 'Are you sure you want to add the product?',
@@ -53,10 +53,9 @@ export class AddProductFormComponent implements OnInit {
         this.productDataService
           .addProduct(this.product)
           .subscribe((response) => {
-            //acknowledgement
+            this.router.navigate(['products']);
           });
         Swal.fire('Product Added Successfully!', 'success');
-        this.router.navigate(['products']);
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire('Cancelled', 'The New Product was Cancelled', 'error');
         this.router.navigate(['products']);
@@ -75,5 +74,9 @@ export class AddProductFormComponent implements OnInit {
       this.imageUrl = event.target.result;
     };
     reader.readAsDataURL(this.fileToUpload);
+  }
+
+  navigatebackToProducts() {
+    this.router.navigate(['products']);
   }
 }

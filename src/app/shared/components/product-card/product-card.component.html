@@ -2,16 +2,15 @@
     <!-- <div class="tag">New</div> -->
     <div class="card-inner-container">
         <h5 class="card-title">{{product.title}}</h5>
-        <img class="card-img-top" [src]="product.imageUrl" alt="Card image cap">
-        <p class="card-text-price">Price: {{product.price | currency:'Rs.'}}</p>
-
-        <button *ngIf="isAdmin" class="btn btn-primary btn-sm add-btn" (click)="addToCart(product.$key)">Add to
+        <img class="card-img-top" [src]="product.image" alt="Card image cap">
+        <p class="card-text-price">{{product.price | currency:'Rs.'}}</p>
+        <!-- <p>{{product.description}}</p> -->
+        <button *ngIf="isAdmin" class="btn btn-primary btn-sm add-btn" (click)="addToCart(product.product_id)">Add to
             Cart</button>
         <p></p>
-
         <div class="button-container">
-            <button *ngIf="isAdmin" class="btn btn-primary btn-sm product-btn" (click)="editproduct(product.$key)">Edit</button>
-            <button *ngIf="isAdmin" class="btn btn-danger btn-sm product-btn" (click)="delete(product.$key)">Delete</button>
+            <button *ngIf="isAdmin" class="btn btn-primary btn-sm product-btn" (click)="editproduct(product.product_id)">Edit</button>
+            <button *ngIf="isAdmin" class="btn btn-danger btn-sm product-btn" (click)="deleteProduct(product.product_id)">Delete</button>
         </div>
     </div>
 </div>

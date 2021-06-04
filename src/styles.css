@@ -1,5 +1,4 @@
 @import "~@ng-select/ng-select/themes/default.theme.css";
-
 .card {
     padding: 20px;
     margin: 20px 0;
@@ -21,4 +20,24 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+}
+
+.btn-primary {
+    margin-right: 10px;
+}
+
+.card-title {
+    color: blue;
+}
+
+.card-description {
+    color: blueviolet;
+}
+
+input.ng-touched.ng-invalid {
+    border: 1px solid red;
+}
+
+ng-select.ng-touched.ng-invalid {
+    border: 1px solid red;
 }

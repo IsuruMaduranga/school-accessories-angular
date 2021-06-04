@@ -12,7 +12,7 @@ import { switchMap } from 'rxjs/operators';
 export class ProductsComponent implements OnInit {
   products: Array<Product>;
   filteredProducts: Product[] = [];
-  category: any;
+  category_id: any;
   userList: Array<any>;
   constructor(
     private route: ActivatedRoute,
@@ -21,12 +21,6 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.populateProducts();
-    // this.productDataService.testConnection().subscribe(
-    //   (users) => {
-    //     this.userList = users;
-    //   },
-    //   (error) => console.log('Error in fetching the data')
-    // );
   }
 
   private populateProducts() {
@@ -35,21 +29,28 @@ export class ProductsComponent implements OnInit {
       .pipe(
         switchMap((products) => {
           this.products = products;
+          console.log('in populate');
           console.log(this.products);
           return this.route.queryParamMap;
         })
       )
       .subscribe((params) => {
-        this.category = params.get('category');
-        console.log(this.category);
+        this.category_id = params.get('category');
+        console.log('selected category : ' + this.category_id);
         this.applyFilter();
       });
   }
 
   private applyFilter() {
-    this.filteredProducts = this.category
-      ? this.products.filter((p) => p.category === this.category)
+    this.filteredProducts = this.category_id
+      ? this.products.filter((p) => p.category_id === this.category_id)
       : this.products;
-    console.log(this.filteredProducts);
+  }
+
+  deleteProduct(pid: number) {
+    console.log('delete ----> ' + pid);
+    this.productDataService
+      .delete(pid)
+      .subscribe((response) => this.populateProducts());
   }
 }

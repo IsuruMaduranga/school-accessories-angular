@@ -11,15 +11,16 @@ import { Router } from '@angular/router';
 })
 export class CartCheckoutComponent implements OnInit {
   cart$:ShoppingCart;
-  
+
 
   constructor(private shoppingCartService: ShoppingCartService, private router: Router) { }
 
- 
+
    async ngOnInit() {
     let items = await this.shoppingCartService.getCart();
     this.cart$ = new ShoppingCart(items);
-  }
+
+   }
   clearCart(){
     this.shoppingCartService.clearCart();
   }

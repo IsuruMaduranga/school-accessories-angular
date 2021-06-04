@@ -7,9 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductDataService {
-  // productList: Array<Product>;
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) {
     // this.productList = new Array<Product>();
     // let p1: Product = {
     //   $key: '1',
@@ -91,49 +90,34 @@ export class ProductDataService {
     // this.productList.push(p8);
     // this.productList.push(p9);
     // this.productList.push(p10);
-  }
+ // }
 
-  getAll(): Observable<Product[]> {
-    return this.http.get<Product[]>('http://localhost:8086/admin/get-products');
+
+  getAll(): Observable<any> {
+    console.log('get-all');
+    return this.http.get<any>('http://localhost:8081/admin/get-products');
   }
 
   addProduct(newProduct: Product): Observable<any> {
     return this.http.post(
-      'http://localhost:8086/admin/add-product',
-      newProduct
-    );
+      'http://localhost:8081/admin/add-product',newProduct);
   }
 
   update(newProduct: Product) {
     return this.http.put(
-      'http://localhost:8086/admin/update-product',
-      newProduct
+      'http://localhost:8081/admin/update-product',newProduct);
+  }
+
+
+
+  delete(pid: number): Observable<any> {
+    return this.http.delete<any>(
+      'http://localhost:8081/admin/delete-product/' + pid
     );
   }
 
-  delete(pid: string): Observable<any> {
-    console.log('http://localhost:8086/admin/delete-product/' + pid);
-    return this.http.delete(
-      'http://localhost:8086/admin/delete-product/' + pid
-    );
-  }
-
-  get(pid: string): Observable<Product> {
+  get(pid: number): Observable<Product> {
     return this.http.get<Product>(
-      'http://localhost:8086/admin/get-product/' + pid
-    );
+      'http://localhost:8081/admin/get-product/' + pid);
   }
 }
-
-// testConnection(product: Product): Observable<any> {
-// return this.http.get<User[]>(
-//   'https://my-json-server.typicode.com/typicode/demo/posts/' + 1
-// );
-// return this.http.get(
-//   'https://my-json-server.typicode.com/typicode/demo/posts'
-// );
-//   return this.http.post(
-//     'https://my-json-server.typicode.com/typicode/demo/posts',
-//     product
-//   );
-// }

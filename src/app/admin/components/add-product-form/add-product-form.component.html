@@ -1,52 +1,52 @@
 <div class="container">
-    <br>
-    <div class="col-md-6">
-        <form class="form-horizontal shadow p-3 mb-5 bg-white rounded" #f="ngForm" (ngSubmit)="addProduct(f.value)">
-            <h4>Add Product</h4>
-            <div class="form-group">
-                <label for="title">Product Title :</label>
-                <input #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control" required>
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Add Products</h4>
+                <form class="forms-sample" #f="ngForm" (ngSubmit)="addProduct(f.value)">
+                    <div class="form-group">
+                        <label for="title">Product title :</label>
+                        <input #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control" required>
+                        <small class="text-danger" *ngIf="title.touched && title.invalid">Name is required</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price :</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">Rs.</span>
+                            <input #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control" required [min]="0">
+                        </div>
+                        <small class="text-danger" *ngIf="price.errors?.required">Price is required</small>
+                        <small class="text-danger" *ngIf="price.errors?.min">Price should be 0 or higher</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category :</label>
+                        <select #category="ngModel" [(ngModel)]="product.category_id" name="category" id="category" class="form-control" required>
+                            <option value=""></option>
+                            <option *ngFor="let c of categories">
+                                {{ c }}
+                            </option>
+                        </select>
+                        <small class="text-danger" *ngIf="category.touched && category.invalid">Category is
+                            required.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Product description :</label>
+                        <input #description="ngModel" [(ngModel)]="product.descript" name="description" id="description" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Product Image :</label>
+                        <input type="file" class="form-control" placeholder="Product Picture" #image accept="image/*" name="image" (change)="handleFileInput($event)">
+                        <br>
+                        <div class="col-3">
+                            <img [src]="imageUrl" style="width:250px;height: 200px;">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button [disabled]="!f.valid" class="btn btn-primary col-md-2">Save</button>
+                        <button class="btn btn-light col-md-2" (click)="navigatebackToProducts()">Cancel</button>
+                    </div>
+                </form>
             </div>
-            <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
-                Title is required.
-            </div>
-            <div class="form-group">
-                <label for="price">Price :</label>
-                <div class="input-group">
-                    <span class="input-group-addon">Rs.</span>
-                    <input #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control" required [min]="0">
-                </div>
-                <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
-                    <div *ngIf="price.errors?.required">Price is required.</div>
-                    <div *ngIf="price.errors?.min">Price should be 0 or higher.</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="category">Category :</label>
-                <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
-                    <option value=""></option>
-                    <option *ngFor="let c of categories">
-                        {{ c }}
-                    </option>
-                </select>
-                <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
-                    Category is required.
-                </div>
-            </div>
-
- 
-
-            <div class="form-group">
-                <label for="category">Product Image :</label>
-                <input type="file" class="form-control" placeholder="Product Picture" #image accept="image/*" name="image" (change)="handleFileInput($event)">
-            </div>
-            <div class="col-3">
-                <img [src]="imageUrl" style="width:250px;height: 200px;">
-            </div>
-            <button [disabled]="!f.valid" class="btn btn-primary">Save</button>
-        </form>
+        </div>
     </div>
-    <!-- <div class="col-md-4">
-        <product-card [product]="product" [show-actions]="false"></product-card>
-    </div> -->
 </div>

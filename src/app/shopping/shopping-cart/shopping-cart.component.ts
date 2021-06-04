@@ -14,8 +14,10 @@ export class ShoppingCartComponent implements OnInit {
   constructor(private shoppingCartService: ShoppingCartService, private router: Router) { }
 
    async ngOnInit() {
-    let items = await this.shoppingCartService.getCart();
-    this.cart$ = new ShoppingCart(items);
+  let items = await this.shoppingCartService.getCart();
+
+   this.cart$ = new ShoppingCart(items);
+   console.log("####"+this.cart$.totalItemsCount);
   }
   clearCart(){
     this.shoppingCartService.clearCart();

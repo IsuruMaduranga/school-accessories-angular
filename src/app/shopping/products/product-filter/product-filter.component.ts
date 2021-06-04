@@ -7,11 +7,13 @@ import { CategoryService } from 'src/app/shared/services/category.service';
   styleUrls: ['./product-filter.component.css'],
 })
 export class ProductFilterComponent implements OnInit {
-  categories$;
+  categories: any;
   @Input('category') category: any;
-  constructor(categoryService: CategoryService) {
-    this.categories$ = categoryService.getAll();
-  }
+  constructor(private categoryService: CategoryService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.categoryService.getAll().subscribe((categories) => {
+      this.categories = categories;
+    });
+  }
 }
