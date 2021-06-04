@@ -99,6 +99,7 @@ export class ProductDataService {
   }
 
   addProduct(newProduct: Product): Observable<any> {
+    console.log('-----' + newProduct.category);
     return this.http.post(
       'http://localhost:8081/admin/add-product',newProduct);
   }
@@ -121,3 +122,21 @@ export class ProductDataService {
       'http://localhost:8081/admin/get-product/' + pid);
   }
 }
+
+// this.httpClient.post('http://localhost:8080/image/upload', uploadImageData, { observe: 'response' })
+// 34
+//       .subscribe((response) => {
+// 35
+//         if (response.status === 200) {
+// 36
+//           this.message = 'Image uploaded successfully';
+// 37
+//         } else {
+// 38
+//           this.message = 'Image not uploaded successfully';
+// 39
+//         }
+// 40
+//       }
+// 41
+//       );

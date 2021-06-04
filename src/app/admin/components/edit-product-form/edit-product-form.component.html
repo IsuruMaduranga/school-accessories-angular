@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
-                    <label for="category">Product Title :</label>
+                    <label for="title">Product Title :</label>
                     <input #title="ngModel" type="text" class="form-control" placeholder="Product Title" ngModel name="title" [(ngModel)]="product.title" required>
                     <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
                         Title is required.
@@ -19,23 +19,23 @@
                     <label for="category">Category :</label>
                     <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
                         <option value=""></option>
-                        <option *ngFor="let c of categories">
-                            {{ c }}
+                        <option *ngFor="let c of categories" [value]="c.name">
+                            {{ c.name }}
                         </option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="description">Product description :</label>
-                    <input #description="ngModel" [(ngModel)]="product.description" name="description" id="description" type="text" class="form-control">
+                    <label for="descript">Product description :</label>
+                    <input #descript="ngModel" [(ngModel)]="product.descript" name="descript" id="descript" type="text" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="category">Product Image :</label>
+                    <label for="image">Product Image :</label>
                     <input type="file" class="form-control" placeholder="Product Picture" #image accept="image/*" name="image" (change)="handleFileInput($event)">
                 </div>
             </div>
             <div class="col-3">
                 <p><b>Original Image :</b></p>
-                <img [src]="product.imageUrl" style="width:70%;height: 60%;">
+                <img [src]="product.image" style="width:70%;height: 60%;">
 
             </div>
             <div class="col-3">
@@ -43,10 +43,14 @@
                 <img [src]="imageUrl" style="width:250px;height: 200px;">
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-6">
                 <input type="submit" class=" btn btn-secondary" value="Update Product">
             </div>
+        </div> -->
+        <div class="form-group">
+            <button [disabled]="!f.valid" class="btn btn-primary col-md-2">Save</button>
+            <button class="btn btn-light col-md-2" (click)="navigatebackToProducts()">Cancel</button>
         </div>
 
     </form>

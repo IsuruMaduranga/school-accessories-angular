@@ -38,17 +38,19 @@ export class EditProductFormComponent implements OnInit {
     let fileList: FileList | null = element.files;
     if (fileList) {
       this.fileToUpload = fileList.item(0);
+      console.log('file' + this.fileToUpload);
     }
     var reader = new FileReader();
     reader.onload = (event: any) => {
       this.imageUrl = event.target.result;
+      console.log('imageUrl' + this.imageUrl);
     };
     reader.readAsDataURL(this.fileToUpload);
   }
 
   save() {
     if (this.imageUrl != '/assets/imgs/noimage.png') {
-      this.product.imageUrl = this.imageUrl;
+      this.product.image = '/assets/imgs/' + this.fileToUpload?.name;
     }
     Swal.fire({
       title: 'Are you sure you want to edit the product?',
@@ -57,18 +59,17 @@ export class EditProductFormComponent implements OnInit {
       cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.value) {
+        console.log(this.product);
         this.productDataService
           .update(this.product)
           .subscribe((response) => this.router.navigate(['products']));
         Swal.fire('Product Details Updated Successfully!', 'success');
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire(
-          'Cancelled',
-          'The Product Details Update was Cancelled',
-          'error'
-        );
-        this.router.navigate(['products']);
       }
     });
+  }
+
+  navigatebackToProducts() {
+    this.router.navigate(['products']);
   }
 }

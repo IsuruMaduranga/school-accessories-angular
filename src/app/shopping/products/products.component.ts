@@ -12,7 +12,7 @@ import { switchMap } from 'rxjs/operators';
 export class ProductsComponent implements OnInit {
   products: Array<Product>;
   filteredProducts: Product[] = [];
-  category_id: any;
+  category: any;
   userList: Array<any>;
   constructor(
     private route: ActivatedRoute,
@@ -29,21 +29,20 @@ export class ProductsComponent implements OnInit {
       .pipe(
         switchMap((products) => {
           this.products = products;
-          console.log('in populate');
-          console.log(this.products);
+          console.log(products);
           return this.route.queryParamMap;
         })
       )
       .subscribe((params) => {
-        this.category_id = params.get('category');
-        console.log('selected category : ' + this.category_id);
+        this.category = params.get('category');
+        console.log('selected category : ' + this.category);
         this.applyFilter();
       });
   }
 
   private applyFilter() {
-    this.filteredProducts = this.category_id
-      ? this.products.filter((p) => p.category_id === this.category_id)
+    this.filteredProducts = this.category
+      ? this.products.filter((p) => p.category === this.category)
       : this.products;
   }
 

@@ -20,21 +20,24 @@
                     </div>
                     <div class="form-group">
                         <label for="category">Category :</label>
-                        <select #category="ngModel" [(ngModel)]="product.category_id" name="category" id="category" class="form-control" required>
-                            <option value=""></option>
-                            <option *ngFor="let c of categories">
-                                {{ c }}
-                            </option>
-                        </select>
-                        <small class="text-danger" *ngIf="category.touched && category.invalid">Category is
-                            required.</small>
+                        <div class="button-container ">
+                            <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
+                                <option value=""></option>
+                                <option *ngFor="let c of categories" [value]="c.name">
+                                    {{ c.name }}
+                                </option>
+                            </select>
+                            <small class="text-danger" *ngIf="category.touched && category.invalid">Category is
+                                required.</small>
+
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="description">Product description :</label>
-                        <input #description="ngModel" [(ngModel)]="product.descript" name="description" id="description" type="text" class="form-control">
+                        <label for="descript">Product description :</label>
+                        <input #descript="ngModel" [(ngModel)]="product.descript" name="descript" id="descript" type="text" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="category">Product Image :</label>
+                        <label for="image">Product Image :</label>
                         <input type="file" class="form-control" placeholder="Product Picture" #image accept="image/*" name="image" (change)="handleFileInput($event)">
                         <br>
                         <div class="col-3">
@@ -44,6 +47,7 @@
                     <div class="form-group">
                         <button [disabled]="!f.valid" class="btn btn-primary col-md-2">Save</button>
                         <button class="btn btn-light col-md-2" (click)="navigatebackToProducts()">Cancel</button>
+                        <!-- <button class="btn plus-btn" (click)="addCategory()">Add</button> -->
                     </div>
                 </form>
             </div>
