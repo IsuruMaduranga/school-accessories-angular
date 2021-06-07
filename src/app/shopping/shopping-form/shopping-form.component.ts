@@ -4,6 +4,8 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { OrderPurchaseService } from 'src/app/shared/services/order-purchase.service';
+import { Order } from 'src/app/shared/models/order';
 
 @Component({
   selector: 'app-shopping-form',
@@ -12,6 +14,17 @@ import Swal from 'sweetalert2';
 })
 export class ShoppingFormComponent implements OnInit {
   shoppingForm: FormGroup;
+  date: Date;
+
+  order: Order = {
+    customer_id: 0,
+    name: '',
+    mobile_number: '',
+    email: '',
+    address: '',
+    total_price: 0,
+    order_date: ''
+  }
 
   months = [
     { id: 1, name: '01' },
@@ -48,10 +61,13 @@ export class ShoppingFormComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private shoppingCartService: ShoppingCartService
-  ) {}
+    private shoppingCartService: ShoppingCartService,
+    private orderPurchaseService: OrderPurchaseService
+  ) {
+  }
 
   ngOnInit(): void {
+    this.date = new Date();
     this.shoppingForm = new FormGroup({
       userName: new FormControl(null, Validators.required),
       email: new FormControl(null, Validators.email),
@@ -75,17 +91,29 @@ export class ShoppingFormComponent implements OnInit {
   }
 
   purchaseCart() {
-    console.log(this.shoppingForm.value);
+    //console.log(this.shoppingForm.value);
+    this.order.customer_id = 0;
+    this.order.name = this.shoppingForm.value.userName;
+    this.order.email = this.shoppingForm.value.email;
+    this.order.mobile_number = this.shoppingForm.value.mobileNo;
+    this.order.address = this.shoppingForm.value.address;
+    this.order.total_price = 300.00;
     Swal.fire({
-      title: 'Are you sure you want to place the offer?',
+      title: 'Are you sure you want to place the order?',
       showCancelButton: true,
       confirmButtonText: 'OK',
       cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.value) {
+        this.orderPurchaseService
+          .purchaseOrder(this.order)
+          .subscribe((response) => {
+            //this.router.navigate(['products']);
+          });
+
         Swal.fire('Order Placed Successfully!', 'success');
-        this.shoppingCartService.clearCart();
-        this.navigateToHome();
+        // this.shoppingCartService.clearCart();
+        // this.navigateToHome();
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire('Cancelled', 'The Order was Cancelled', 'error');
       }

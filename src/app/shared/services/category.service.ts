@@ -25,6 +25,6 @@ export class CategoryService {
   // }
 
   getAll(): Observable<any> {
-    return this.http.get<any>('http://localhost:8081/category/get-categories');
+    return this.http.get<any>('http://localhost:8087/category/get-categories');
   }
 }
