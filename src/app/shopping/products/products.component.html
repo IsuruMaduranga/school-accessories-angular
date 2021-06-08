@@ -4,7 +4,7 @@
     </div>
     <div class="col">
         <div class="row card-group">
-            <div class="col-md-2 col-sm-12" *ngFor="let p of filteredProducts">
+            <div *ngFor="let p of filteredProducts">
                 <app-product-card [product]="p" (delete)="deleteProduct($event)"></app-product-card>
             </div>
         </div>
