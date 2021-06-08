@@ -1,0 +1,35 @@
+.select-control {
+    height: 40px;
+    flex: 1;
+}
+
+.plus-btn {
+    border: 2px solid;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-color: dodgerblue;
+    margin: 0 15px;
+}
+
+.plus-btn-text {
+    padding: 0px;
+    margin-top: -5px;
+    color: dodgerblue;
+    line-height: 0.75em;
+    font-size: 30px;
+    font-style: bold;
+    text-align: center;
+}
+
+.plus-btn:hover {
+    cursor: pointer;
+    background-color: dodgerblue;
+}
+
+.plus-btn-text:hover {
+    color: white;
+}
