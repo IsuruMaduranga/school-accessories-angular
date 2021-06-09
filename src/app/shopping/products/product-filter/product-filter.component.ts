@@ -12,6 +12,9 @@ export class ProductFilterComponent implements OnInit {
   constructor(private categoryService: CategoryService) {}
 
   ngOnInit(): void {
-    this.categories = this.categoryService.getAll();
+    this.categoryService.getAll().subscribe((response) => {
+      this.categories = response;
+      console.log(response);
+    });
   }
 }

@@ -1,45 +1,61 @@
 import { Product } from './../models/product';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductDataService {
+  private REST_API_SERVER = 'http://localhost:8081/admin';
+
   constructor(private http: HttpClient) {}
+
+  handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Unknown error!';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side errors
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Server-side errors
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    window.alert(errorMessage);
+    return throwError(errorMessage);
+  }
 
   getAll(): Observable<any> {
     console.log('get-all');
-    return this.http.get<any>('http://localhost:8081/admin/get-products');
+    return this.http
+      .get<any>(this.REST_API_SERVER + '/get-products')
+      .pipe(retry(3), catchError(this.handleError));
   }
 
   addProduct(newProduct: Product): Observable<any> {
     console.log('-----' + newProduct.category);
-    return this.http.post(
-      'http://localhost:8081/admin/add-product',
-      newProduct
-    );
+    return this.http
+      .post(this.REST_API_SERVER + '/add-product', newProduct)
+      .pipe(retry(3), catchError(this.handleError));
   }
 
   update(newProduct: Product) {
-    return this.http.put(
-      'http://localhost:8081/admin/update-product',
-      newProduct
-    );
+    return this.http
+      .put(this.REST_API_SERVER + '/update-product', newProduct)
+      .pipe(retry(3), catchError(this.handleError));
   }
 
   delete(pid: number): Observable<any> {
     // console.log('http://localhost:8081/admin/delete-product/' + pid);
-    return this.http.delete<any>(
-      'http://localhost:8081/admin/delete-product/' + pid
-    );
+    return this.http
+      .delete<any>(this.REST_API_SERVER + '/delete-product/' + pid)
+      .pipe(retry(3), catchError(this.handleError));
   }
 
   get(pid: number): Observable<Product> {
-    return this.http.get<Product>(
-      'http://localhost:8081/admin/get-product/' + pid
-    );
+    return this.http
+      .get<Product>(this.REST_API_SERVER + '/get-product/' + pid)
+      .pipe(retry(3), catchError(this.handleError));
   }
 }
 
