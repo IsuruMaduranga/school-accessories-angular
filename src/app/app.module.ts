@@ -12,6 +12,7 @@ import { CoreModule } from './core/core.module';
 import { LoginComponent } from './core/components/login/login.component';
 import { EditProductFormComponent } from './admin/components/edit-product-form/edit-product-form.component';
 import { AddProductFormComponent } from './admin/components/add-product-form/add-product-form.component';
+import {CustomerModule} from "./customer/customer.module";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AddProductFormComponent } from './admin/components/add-product-form/add
     HttpClientModule,
     AppRoutingModule,
     ShoppingModule,
+    CustomerModule,
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: LoginComponent },

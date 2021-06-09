@@ -1,0 +1,47 @@
+<h3 style="color:#0b5ed7">My-Orders</h3>
+
+<br>
+<div class="card card-description left-element" style="width: 60%">
+<table class="table table-striped">
+  <thead>
+  <tr class="card-description">
+    <th scope="col">ID</th>
+    <th scope="col">Customer</th>
+    <th scope="col">Mobile</th>
+    <th scope="col">Email</th>
+    <th scope="col">Address</th>
+    <th scope="col"> Price </th>
+    <th scope="col">Date</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <ng-container *ngFor="let order of myorders ; let i = index">
+  <tr (click)="expandCol(order,i)" [style.background-color]="i==this.index? '#34ebd8':''">
+    <td>{{order.order_id}}</td>
+    <td>
+      {{order.name}}
+
+    </td>
+    <td>{{order.mobile_number}}</td>
+    <td>{{order.email}}</td>
+    <td>{{order.address}}</td>
+    <td>{{order.total_price}}</td>
+    <td>{{order.order_date}}</td>
+  <!--  <td> <a href="">show items</a></td>
+  -->
+  </tr>
+
+  </ng-container>
+
+
+
+
+  </tbody>
+</table>
+
+
+</div>
+<div *ngIf="expand" class="right-element">
+  <app-order-items [order]="expandedOrder"></app-order-items>
+</div>
