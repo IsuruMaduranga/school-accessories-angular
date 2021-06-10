@@ -12,6 +12,9 @@ import { CoreModule } from './core/core.module';
 import { LoginComponent } from './core/components/login/login.component';
 import { EditProductFormComponent } from './admin/components/edit-product-form/edit-product-form.component';
 import { AddProductFormComponent } from './admin/components/add-product-form/add-product-form.component';
+import { CommonModule } from "@angular/common";
+import { AdminAnalysisModule } from './admin-analysis/admin-analysis.module';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import { AddProductFormComponent } from './admin/components/add-product-form/add
     HttpClientModule,
     AppRoutingModule,
     ShoppingModule,
+    AdminAnalysisModule,
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: LoginComponent },
@@ -34,6 +38,8 @@ import { AddProductFormComponent } from './admin/components/add-product-form/add
     ReactiveFormsModule,
     HttpClientModule,
     CoreModule,
+    CommonModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

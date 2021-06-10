@@ -15,4 +15,16 @@ export class OrderPurchaseService {
         'http://localhost:8087/customer/add-order',newOrder);
     }
 
+    getAllOrders(): Observable<any> {
+      return this.http.get<any>('http://localhost:8087/customer/get-orders');
+    }
+
+    getAllOrdersByName(name: any): Observable<any> {
+      return this.http.get<any>('http://localhost:8087/customer/get-ordersByName?name='+ name);
+    }
+
+    getOrdersByDate(date: any): Observable<any> {
+      return this.http.get<any>('http://localhost:8087/customer/get-ordersByDate?date='+ date);
+    }
+
 }
