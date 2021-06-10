@@ -18,10 +18,17 @@ import {OrderItem} from "../../shared/models/OrderItem";
 export class MyOrdersComponent implements OnInit {
 
   myorders:any;
+  pageOfItems:Array<any>;
   expand:boolean=false;
   index:number;
   expandedOrder:TOrder;
   filter = new FormControl('');
+
+  page = 1;
+  count = 0;
+  tableSize = 8;
+  tableSizes = [3, 6, 9, 12];
+
 
 
 
@@ -30,20 +37,32 @@ export class MyOrdersComponent implements OnInit {
   }
 
     ngOnInit():void {
-    this.orderService.getOrdersBy().subscribe((myorders) => {
-      this.myorders =myorders;
-    });
+      this.fetchPosts();
 
   }
 
   navigateToItems(){}
+  fetchPosts(){
+    this.orderService.getOrdersBy().subscribe((myorders) => {
+      this.myorders =myorders;this.myorders=this.myorders.reverse();
+    });
+  }
 
   expandCol(orderItem:TOrder,i:number){
     this.expandedOrder=orderItem;
     this.expand=!this.expand;
     this.index = i;
   }
+  onTableDataChange(event:any){
+    this.page = event;
+    this.fetchPosts();
+  }
 
+  onTableSizeChange(event:any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.fetchPosts();
+  }
 
 }
 

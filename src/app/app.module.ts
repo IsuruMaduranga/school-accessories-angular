@@ -19,6 +19,7 @@ import {CustomerModule} from "./customer/customer.module";
     AppComponent,
     EditProductFormComponent,
     AddProductFormComponent,
+
   ],
   imports: [
     BrowserModule,

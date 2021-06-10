@@ -9,15 +9,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import {NgbTypeaheadModule} from "@ng-bootstrap/ng-bootstrap";
 import {ReactiveFormsModule} from "@angular/forms";
 import { OrderItemsComponent } from './my-orders/order-items/order-items.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
   declarations: [
     MyOrdersComponent,
-    OrderItemsComponent
+    OrderItemsComponent,
+    OrderItemsComponent,
+
   ],
   imports: [
-    CommonModule, BrowserModule, NgbTypeaheadModule, ReactiveFormsModule
+    CommonModule, BrowserModule, NgbTypeaheadModule, ReactiveFormsModule,NgxPaginationModule
   ]
   , providers: [
     OrderPurchaseService

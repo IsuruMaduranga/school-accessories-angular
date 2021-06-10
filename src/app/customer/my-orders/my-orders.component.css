@@ -9,7 +9,7 @@
 .left-element {
   display: inline-block;
   position: absolute;
-  left: 0;
+  left: 20px;
 }
 
 .right-element {
