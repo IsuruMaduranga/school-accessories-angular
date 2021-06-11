@@ -33,3 +33,10 @@
 .plus-btn-text:hover {
     color: white;
 }
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    outline-style: dashed;
+}
