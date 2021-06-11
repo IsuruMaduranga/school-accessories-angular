@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { OrderPurchaseService } from 'src/app/shared/services/order-purchase.service';
 import { Order } from 'src/app/shared/models/order';
+import {ShoppingCart} from "../../shared/models/shopping-cart";
 
 @Component({
   selector: 'app-shopping-form',
@@ -15,6 +16,7 @@ import { Order } from 'src/app/shared/models/order';
 export class ShoppingFormComponent implements OnInit {
   shoppingForm: FormGroup;
   date: Date;
+  order_id:number;
 
   order: Order = {
     customer_id: 0,
@@ -97,7 +99,7 @@ export class ShoppingFormComponent implements OnInit {
     this.order.email = this.shoppingForm.value.email;
     this.order.mobile_number = this.shoppingForm.value.mobileNo;
     this.order.address = this.shoppingForm.value.address;
-    this.order.total_price = 300.00;
+    this.order.total_price = new ShoppingCart(this.shoppingCartService.getCart()).totalPrice;
     Swal.fire({
       title: 'Are you sure you want to place the order?',
       showCancelButton: true,
@@ -109,10 +111,20 @@ export class ShoppingFormComponent implements OnInit {
           .purchaseOrder(this.order)
           .subscribe((response) => {
             //this.router.navigate(['products']);
+            this.order_id=response;
+            this.orderPurchaseService.fillItems(this.shoppingCartService.getCart(),this.order_id).subscribe((response)=>{
+              this.shoppingCartService.clearCart();
+            });
+
           });
 
+
+        //todo
+
+
+
         Swal.fire('Order Placed Successfully!', 'success');
-        // this.shoppingCartService.clearCart();
+     //   this.shoppingCartService.clearCart();
         // this.navigateToHome();
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire('Cancelled', 'The Order was Cancelled', 'error');

@@ -16,6 +16,7 @@ import { CommonModule } from "@angular/common";
 import { AdminAnalysisModule } from './admin-analysis/admin-analysis.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {CustomerModule} from "./customer/customer.module";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     AppRoutingModule,
     ShoppingModule,
-    AdminAnalysisModule,
+    CustomerModule,
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: LoginComponent },

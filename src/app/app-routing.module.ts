@@ -6,12 +6,14 @@ import { AdminDataTableComponent } from './admin-analysis/admin-data-table/admin
 import { LoginComponent } from './core/components/login/login.component';
 import { CartCheckoutComponent } from './shopping/cart-checkout/cart-checkout.component';
 import { ShoppingFormComponent } from './shopping/shopping-form/shopping-form.component';
+import {MyOrdersComponent} from "./customer/my-orders/my-orders.component";
 
 const routes: Routes = [
   { path: 'purchase', component: ShoppingFormComponent },
   { path: 'cart-checkout', component: CartCheckoutComponent},
   { path: 'admin-data-table', component: AdminDataTableComponent },
-  { path: 'admin-charts', component: AdminChartsComponent }
+  { path: 'admin-charts', component: AdminChartsComponent },
+  { path: 'my-orders', component: MyOrdersComponent}
 ];
 
 @NgModule({

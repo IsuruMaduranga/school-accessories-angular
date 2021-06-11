@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ShoppingCartService} from "../../shared/services/shopping-cart.service";
 import {ShoppingCart} from "../../shared/models/shopping-cart";
 import { Router } from '@angular/router';
-
+//test test
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
