@@ -14,7 +14,7 @@ export class OrderPurchaseService {
 
     purchaseOrder(newOrder: Order): Observable<any> {
       return this.http.post(
-        'http://localhost:8081/customer/add-order2',newOrder);
+        'http://localhost:8087/customer/add-order2',newOrder);
     }
 
     fillItems(items: ShoppingCartItem[],order_id:number):Observable<any>{
@@ -33,12 +33,23 @@ export class OrderPurchaseService {
         };
         Items.push(newName);
       }
-      return this.http.post('http://localhost:8081/customer/add-order-items',JSON.stringify(Items),httpOptions);
+      return this.http.post('http://localhost:8087/customer/add-order-items',JSON.stringify(Items),httpOptions);
     }
 
-  getOrdersBy(): Observable<any> {
-    return this.http.get<any>('http://localhost:8081/customer/get-orders');
-    //todo bind orderID
-  }
+    getAllOrders(): Observable<any> {
+      return this.http.get<any>('http://localhost:8087/customer/get-orders');
+    }
+
+    getAllOrdersByName(name: any): Observable<any> {
+      return this.http.get<any>('http://localhost:8087/customer/get-ordersByName?name='+ name);
+    }
+
+    getOrdersByDate(date: any): Observable<any> {
+      return this.http.get<any>('http://localhost:8087/customer/get-ordersByDate?date='+ date);
+    }
+    getOrdersBy(): Observable<any> {
+      return this.http.get<any>('http://localhost:8087/customer/get-orders');
+      //todo bind orderID
+    }
 
 }
