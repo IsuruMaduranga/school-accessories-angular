@@ -125,7 +125,7 @@ export class ShoppingFormComponent implements OnInit {
 
         Swal.fire('Order Placed Successfully!', 'success');
      //   this.shoppingCartService.clearCart();
-        // this.navigateToHome();
+        this.navigateToHome();
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire('Cancelled', 'The Order was Cancelled', 'error');
       }
