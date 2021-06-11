@@ -15,12 +15,13 @@ import { AddProductFormComponent } from './admin/components/add-product-form/add
 import { CommonModule } from "@angular/common";
 import { AdminAnalysisModule } from './admin-analysis/admin-analysis.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     EditProductFormComponent,
-    AddProductFormComponent,
+    AddProductFormComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +40,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     HttpClientModule,
     CoreModule,
     CommonModule,
-    NgxChartsModule
+    NgxChartsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
