@@ -11,14 +11,14 @@
     align-items: center;
     height: 40px;
     width: 40px;
-    border-color: dodgerblue;
+    border-color: rgb(48, 133, 214);
     margin: 0 15px;
 }
 
 .plus-btn-text {
     padding: 0px;
     margin-top: -5px;
-    color: dodgerblue;
+    color: rgb(48, 133, 214);
     line-height: 0.75em;
     font-size: 30px;
     font-style: bold;
@@ -27,7 +27,7 @@
 
 .plus-btn:hover {
     cursor: pointer;
-    background-color: dodgerblue;
+    background-color: rgb(48, 133, 214);
 }
 
 .plus-btn-text:hover {
@@ -39,4 +39,38 @@
     flex-direction: column;
     align-items: center;
     outline-style: dashed;
+}
+
+.product-btn-save {
+    width: 50%;
+    text-align: center;
+    background-color: rgb(48, 133, 214);
+    color: white;
+    margin-right: 10px;
+}
+
+.product-btn-cancel {
+    width: 50%;
+    text-align: center;
+    background-color: #6e7d88;
+    color: white;
+}
+
+.container {
+    width: 50%;
+}
+
+.edit-product-button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    margin-bottom: 10px;
+    /* outline-style: solid; */
+}
+
+.form-horizontal {
+    background-color: #fcfcfc;
+    border-radius: 2px;
+    z-index: 10;
+    box-shadow: 0 2px 3px #3a393945;
 }

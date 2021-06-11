@@ -37,8 +37,6 @@ export class CategoryService {
       .pipe(retry(3), catchError(this.handleError));
   }
 
-  // response.sort((a, b) => (a.attribute < b.attribute ) ? -1 : 1)
-
   addCategory(newCategory: Category): Observable<any> {
     return this.http
       .post<any>(this.REST_API_SERVER + '/add-category', newCategory)

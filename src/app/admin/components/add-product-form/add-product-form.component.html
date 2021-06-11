@@ -1,7 +1,8 @@
 <div class="container">
     <br>
-    <form class="form-horizontal shadow p-3 mb-5 bg-white rounded" #f="ngForm" (ngSubmit)="onClick(buttonType)">
-        <h4>Add Product</h4>
+    <form class="form-horizontal p-3 mb-5 rounded" #f="ngForm" (ngSubmit)="onClick(buttonType)">
+        <h4 class="form-title">Add Product</h4>
+        <div class="horizontal-line"></div>
         <div class="form-group">
             <label for="title">Product title :</label>
             <input #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control" required>
@@ -38,15 +39,15 @@
         </div>
         <div class="form-group">
             <label for="image">Product Image :</label>
-            <input type="file" class="form-control" placeholder="Product Picture" #image accept="image/*" name="image" (change)="handleFileInput($event)">
+            <input type="file" class="form-control img" placeholder="Product Picture" #image accept="image/*" name="image" (change)="handleFileInput($event)">
             <br>
             <div class="col-3">
                 <img [src]="imageUrl" style="width:250px;height: 200px;">
             </div>
         </div>
-        <div class="form-group">
-            <button [disabled]="!f.valid" class="btn btn-primary col-md-2" (click)="onClick('add-product')">Save</button>
-            <button class="btn btn-light col-md-2" (click)="onClick('cancel')">Cancel</button>
+        <div class="edit-product-button-container">
+            <button [disabled]="!f.valid" class="btn product-btn-save" (click)="onClick('add-product')">Add</button>
+            <button class="btn product-btn-cancel" (click)="onClick('cancel')">Cancel</button>
         </div>
     </form>
 </div>

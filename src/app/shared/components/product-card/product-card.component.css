@@ -31,13 +31,17 @@ img {
 }
 
 .product-btn-edit {
-    width: 60px;
+    width: 50px;
     text-align: left;
+    background-color: rgb(48, 133, 214);
+    color: white;
 }
 
 .product-btn-delete {
     width: 60px;
     text-align: right;
+    background-color: rgb(221, 51, 51);
+    color: white;
 }
 
 .product-button-container {
