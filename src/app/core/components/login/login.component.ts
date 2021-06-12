@@ -11,11 +11,11 @@ import { UserService } from '../../services/user.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private userService:UserService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      email: new FormControl(null,[
+      email: new FormControl(null, [
         Validators.required,
         Validators.email
       ]),
@@ -26,19 +26,26 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login(){
-    const loginReq:LoginRequest = new LoginRequest(
+  login() {
+    const loginReq: LoginRequest = new LoginRequest(
       this.loginForm.value.email,
       this.loginForm.value.password
     );
 
-    this.userService.login(loginReq).subscribe(res=>{
-      let token = res.token;
-      console.log(token);
-    },error=>{
-      console.log(error);
+    this.userService.login(loginReq).subscribe(res => {
+      if (res.token) {
+        localStorage.setItem('token', res.token);
+      } else {
+        alert("Server Error!");
+      }
+    }, e => {
+      if (e.error instanceof ProgressEvent) {
+        alert('An error occurred!');
+      } else {
+        alert(e.error.message);
+      }
     });
-    
   }
+
 
 }
