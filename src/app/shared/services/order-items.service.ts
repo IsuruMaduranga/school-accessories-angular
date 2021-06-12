@@ -12,6 +12,6 @@ export class OrderItemsService {
   }
 
   getItems(orderID:number):Observable<any>{
-   return  this.http.get<any>("http://localhost:8081/order/get-items?orderid="+orderID);
+   return  this.http.get<any>("http://localhost:8087/order/get-items?orderid="+orderID);
   }
 }

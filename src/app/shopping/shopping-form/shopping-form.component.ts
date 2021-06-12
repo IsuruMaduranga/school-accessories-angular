@@ -113,17 +113,19 @@ export class ShoppingFormComponent implements OnInit {
             //this.router.navigate(['products']);
             this.order_id=response;
             this.orderPurchaseService.fillItems(this.shoppingCartService.getCart(),this.order_id).subscribe((response)=>{
-              //todo
+              this.shoppingCartService.clearCart();
             });
 
           });
+
+
         //todo
 
 
 
         Swal.fire('Order Placed Successfully!', 'success');
-        // this.shoppingCartService.clearCart();
-        // this.navigateToHome();
+     //   this.shoppingCartService.clearCart();
+        this.navigateToHome();
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire('Cancelled', 'The Order was Cancelled', 'error');
       }

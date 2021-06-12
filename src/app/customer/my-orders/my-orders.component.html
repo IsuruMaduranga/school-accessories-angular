@@ -2,31 +2,32 @@
 
 <br>
 <div class="card card-description left-element" style="width: 60%">
-<table class="table table-striped">
+<table class="table ">
   <thead>
   <tr class="card-description">
-    <th scope="col">ID</th>
-    <th scope="col">Customer</th>
-    <th scope="col">Mobile</th>
-    <th scope="col">Email</th>
-    <th scope="col">Address</th>
+    <th scope="col">Order ID</th>
+    <th scope="col">Receipent name</th>
+    <th scope="col">Delivery Address</th>
     <th scope="col"> Price </th>
     <th scope="col">Date</th>
 
   </tr>
   </thead>
   <tbody>
-  <ng-container *ngFor="let order of myorders ; let i = index">
+  <ng-container *ngFor="let order of myorders | paginate : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              };
+        let i = index" [class.active]="i ==page">
   <tr (click)="expandCol(order,i)" [style.background-color]="i==this.index? '#34ebd8':''">
     <td>{{order.order_id}}</td>
     <td>
       {{order.name}}
 
     </td>
-    <td>{{order.mobile_number}}</td>
-    <td>{{order.email}}</td>
     <td>{{order.address}}</td>
-    <td>{{order.total_price}}</td>
+    <td>Rs. {{order.total_price}}</td>
     <td>{{order.order_date}}</td>
   <!--  <td> <a href="">show items</a></td>
   -->
@@ -39,7 +40,13 @@
 
   </tbody>
 </table>
-
+  <div class="d-flex justify-content-center">
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="onTableDataChange($event)">
+    </pagination-controls>
+  </div>
 
 </div>
 <div *ngIf="expand" class="right-element">
