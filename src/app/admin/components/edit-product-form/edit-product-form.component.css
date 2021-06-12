@@ -54,12 +54,4 @@
     justify-content: space-between;
     width: 20%;
     margin-bottom: 10px;
-    /* outline-style: solid; */
-}
-
-.form-horizontal {
-    background-color: #fcfcfc;
-    border-radius: 2px;
-    z-index: 10;
-    box-shadow: 0 2px 3px #3a393945;
 }

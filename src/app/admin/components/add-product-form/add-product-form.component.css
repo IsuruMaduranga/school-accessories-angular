@@ -57,20 +57,13 @@
 }
 
 .container {
-    width: 50%;
+    width: 80%;
 }
 
 .edit-product-button-container {
     display: flex;
     justify-content: space-between;
     width: 40%;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     /* outline-style: solid; */
-}
-
-.form-horizontal {
-    background-color: #fcfcfc;
-    border-radius: 2px;
-    z-index: 10;
-    box-shadow: 0 2px 3px #3a393945;
 }

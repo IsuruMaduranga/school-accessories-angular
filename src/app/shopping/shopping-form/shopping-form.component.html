@@ -1,42 +1,41 @@
-<div class="container">
-  <div class="page-header">
-    
- 
-  </div>
-  <div class="row">
-    <div class="col-md-6 grid-margin stretch-card">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">Purchase Items</h4>
-          <p class="card-description">
-            Delivery Details
-          </p>
-          <form class="forms-sample" [formGroup] = "shoppingForm">
+<div class="outlet">
+    <div class="container">
+        <br>
+        <form class="form-horizontal p-3 mb-5 rounded" [formGroup]="shoppingForm">
+            <h4 class="form-title">Purchase Items</h4>
+            <div class="horizontal-line"></div>
+            <h6 class="form-title2">
+                Delivery Details
+            </h6>
             <div class="form-group">
-              <label for="exampleInputUsername1">Name</label>
-              <input type="text" class="form-control" id="username" placeholder="Username" name="username" formControlName="userName" ngModel required >
-              <small class="text-danger" *ngIf="shoppingForm.get('userName')?.invalid && shoppingForm.get('userName')?.touched">Name is required</small>
+                <label for="exampleInputUsername1">Name</label>
+                <input type="text" class="form-control" id="username" placeholder="Username" name="username" formControlName="userName" ngModel required>
+                <small class="text-danger" *ngIf="shoppingForm.get('userName')?.invalid && shoppingForm.get('userName')?.touched">Name is
+          required</small>
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
-              <small class="text-danger" *ngIf="shoppingForm.get('email')?.invalid && shoppingForm.get('email')?.touched">Enter correct email</small>
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
+                <small class="text-danger" *ngIf="shoppingForm.get('email')?.invalid && shoppingForm.get('email')?.touched">Enter
+          correct
+          email</small>
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Mobile No</label>
-              <input type="text" class="form-control" id="mobileno" placeholder="Mobile No (0714568952)" formControlName="mobileNo" ngModel required>
-              <small class="text-danger" *ngIf="shoppingForm.get('mobileNo')?.invalid && shoppingForm.get('mobileNo')?.touched">Enter valid mobile no</small>
+                <label for="exampleInputPassword1">Mobile No</label>
+                <input type="text" class="form-control" id="mobileno" placeholder="Mobile No (0714568952)" formControlName="mobileNo" ngModel required>
+                <small class="text-danger" *ngIf="shoppingForm.get('mobileNo')?.invalid && shoppingForm.get('mobileNo')?.touched">Enter valid
+          mobile no</small>
             </div>
             <div class="form-group">
-              <label for="exampleInputConfirmPassword1">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="Deliery Address" formControlName="address" ngModel required>
-              <small class="text-danger" *ngIf="shoppingForm.get('address')?.invalid && shoppingForm.get('address')?.touched">Address is required</small>
+                <label for="exampleInputConfirmPassword1">Address</label>
+                <input type="text" class="form-control" id="address" placeholder="Deliery Address" formControlName="address" ngModel required>
+                <small class="text-danger" *ngIf="shoppingForm.get('address')?.invalid && shoppingForm.get('address')?.touched">Address is
+          required</small>
             </div>
-            <p></p>
-
-            <p class="card-description">
-              Card Details
-            </p>
+            <br>
+            <h6 class="form-title2">
+                Card Details
+            </h6>
 
             <!-- <div class="form-check form-check-flat form-check-primary">
               <label class="form-check-label">
@@ -54,53 +53,46 @@
             </div> -->
 
             <div class="form-check form-check-flat form-check-primary" *ngFor="let chk of checkboxes">
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" [disabled]="chk.checked" (click)="disableOther(chk)"> {{chk.value}}
-            </label>
-            </div>
-            
-            <div class="form-group">
-              <label for="exampleInputUsername1">Card No</label>
-              <input type="number" class="form-control" id="cardno" placeholder="Card No (16 digits)" formControlName="cardNo" ngModel required>
-              <small class="text-danger" *ngIf="shoppingForm.get('cardNo')?.invalid && shoppingForm.get('cardNo')?.touched">Enter a valid card no</small>
+                <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" [disabled]="chk.checked" (click)="disableOther(chk)">
+          {{chk.value}}
+        </label>
             </div>
 
             <div class="form-group">
-              <label for="exampleInputUsername1">CVC</label>
-              <input type="number" class="form-control" id="cvc" placeholder="CVC (3 digits)" formControlName="cvc" ngModel required>
-              <small class="text-danger" *ngIf="shoppingForm.get('cvc')?.invalid && shoppingForm.get('cvc')?.touched">Enter a valid cv</small>
+                <label for="exampleInputUsername1">Card No</label>
+                <input type="number" class="form-control" id="cardno" placeholder="Card No (16 digits)" formControlName="cardNo" ngModel required>
+                <small class="text-danger" *ngIf="shoppingForm.get('cardNo')?.invalid && shoppingForm.get('cardNo')?.touched">Enter a valid card
+          no</small>
             </div>
 
             <div class="form-group">
-              <label for="exampleInputUsername1">Expiration Month</label>
-              <ng-select [items]="months" 
-                bindLabel="name" 
-                bindValue="id"
-                formControlName="monthExpire" ngModel required>
-              </ng-select>
-              <small class="text-danger" *ngIf="shoppingForm.get('monthExpire')?.invalid && shoppingForm.get('monthExpire')?.touched">Select the month</small>
+                <label for="exampleInputUsername1">CVC</label>
+                <input type="number" class="form-control" id="cvc" placeholder="CVC (3 digits)" formControlName="cvc" ngModel required>
+                <small class="text-danger" *ngIf="shoppingForm.get('cvc')?.invalid && shoppingForm.get('cvc')?.touched">Enter
+          a valid cv</small>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputUsername1">Expiration Month</label>
+                <ng-select [items]="months" bindLabel="name" bindValue="id" formControlName="monthExpire" ngModel required>
+                </ng-select>
+                <small class="text-danger" *ngIf="shoppingForm.get('monthExpire')?.invalid && shoppingForm.get('monthExpire')?.touched">Select the
+          month</small>
             </div>
             <div class="form-group">
-              <label for="exampleInputUsername1">Expiration Year</label>
-              <ng-select [items]="years" 
-                bindLabel="name" 
-                bindValue="id"
-                formControlName="yearExpire"  ngModel required>
-              </ng-select>
-              <small class="text-danger" *ngIf="shoppingForm.get('yearExpire')?.invalid && shoppingForm.get('yearExpire')?.touched">Select the year</small>
+                <label for="exampleInputUsername1">Expiration Year</label>
+                <ng-select [items]="years" bindLabel="name" bindValue="id" formControlName="yearExpire" ngModel required>
+                </ng-select>
+                <small class="text-danger" *ngIf="shoppingForm.get('yearExpire')?.invalid && shoppingForm.get('yearExpire')?.touched">Select the
+          year</small>
             </div>
             <p></p>
-            <div class="form-group">
-            <button type="submit" class="btn btn-primary col-md-2" (click) = "purchaseCart()" [disabled]="!shoppingForm.valid">Submit</button>
-           
-            <button class="btn btn-light col-md-2" (click)="navigatebackToCart()">Cancel</button>
-          </div>
-          </form>
-        </div>
-      </div>
+            <div class="shopping-form-button-container">
+                <button type="submit" class="btn btn-submit" (click)="purchaseCart()" [disabled]="!shoppingForm.valid">Submit</button>
+
+                <button class="btn btn-cancel" (click)="navigatebackToCart()">Cancel</button>
+            </div>
+        </form>
     </div>
-    </div>
-  </div>
-  <div class="container">
-    <p></p>
-  </div>
+</div>
