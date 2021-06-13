@@ -47,8 +47,8 @@ export class OrderPurchaseService {
     getOrdersByDate(date: any): Observable<any> {
       return this.http.get<any>('http://localhost:8081/customer/get-ordersByDate?date='+ date);
     }
-    getOrdersBy(): Observable<any> {
-      return this.http.get<any>('http://localhost:8081/customer/get-orders');
+    getOrdersByID(id:number): Observable<any> {
+      return this.http.get<any>('http://localhost:8081/customer/get-ordersByID?id='+id);
       //todo bind orderID
     }
 

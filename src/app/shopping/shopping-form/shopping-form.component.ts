@@ -21,7 +21,7 @@ export class ShoppingFormComponent implements OnInit {
   order_id:number;
 
   order: Order = {
-    customer_id: 0,
+    customerId: 0,
     name: '',
     mobile_number: '',
     email: '',
@@ -97,7 +97,7 @@ export class ShoppingFormComponent implements OnInit {
 
     this.profileLoaderService.getUserID(this.userService.email).subscribe((response)=>{
       console.log(response);
-      this.order.customer_id=response.user_id;
+      this.order.customerId=response.user_id;
     });
   }
 

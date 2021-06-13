@@ -8,6 +8,8 @@ import {DecimalPipe} from "@angular/common";
 import {map, startWith} from "rxjs/operators";
 import {FormControl} from "@angular/forms";
 import {OrderItem} from "../../shared/models/OrderItem";
+import {ProfileLoaderService} from "../../shared/services/profile-loader.service";
+import {UserService} from "../../core/services/user.service";
 
 @Component({
   selector: 'app-my-orders',
@@ -25,6 +27,7 @@ export class MyOrdersComponent implements OnInit {
   expandedOrder:TOrder;
   visibilityArr:boolean[];
   lastShown:number;
+  userID:number;
 
   filter = new FormControl('');
 
@@ -36,21 +39,27 @@ export class MyOrdersComponent implements OnInit {
 
 
 
-  constructor(pipe: DecimalPipe,private orderService : OrderPurchaseService) {
+  constructor(pipe: DecimalPipe,private orderService : OrderPurchaseService,private profileLoaderService: ProfileLoaderService,private userService :UserService) {
 
   }
 
     ngOnInit():void {
-      this.fetchPosts();
-      for(var i = 0;i<this.myorders.length;i++){
-        this.visibilityArr.push(false);
-      }
+
+   this.profileLoaderService.getUserID(this.userService.email).subscribe((response)=>{
+     console.log(response);
+      this.userID=response.user_id;
+     this.fetchPosts();
+     for(var i = 0;i<this.myorders.length;i++){
+       this.visibilityArr.push(false);
+     }
+    });
+
 
   }
 
   navigateToItems(){}
   fetchPosts(){
-    this.orderService.getOrdersBy().subscribe((myorders) => {
+    this.orderService.getOrdersByID(this.userID).subscribe((myorders) => {
       this.myorders =myorders;this.myorders=this.myorders.reverse();
 
     });
