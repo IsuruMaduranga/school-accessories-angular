@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CustomerAnalyticsService} from "../services/customer-analytics.service";
 import {resolveFileWithPostfixes} from "@angular/compiler-cli/ngcc/src/utils";
+import {UserService} from "../../core/services/user.service";
 
 @Component({
   selector: 'app-customer-analytics',
@@ -12,12 +13,14 @@ export class CustomerAnalyticsComponent implements OnInit {
   expense:any;
   statics:any;
   orderIDs:any;
-  email:string="customer1@gmail.com"
+  email:string;
 
 
-  constructor(private customerAnalyticsService: CustomerAnalyticsService) { }
+  constructor(private customerAnalyticsService: CustomerAnalyticsService,private userService:UserService ) { }
 
   ngOnInit(): void {
+    this.email = this.userService.email;
+
     this.customerAnalyticsService.getCategoryWiseExpenditure(this.email).subscribe((response) => {
           this.expense = response;
     });
@@ -32,7 +35,7 @@ export class CustomerAnalyticsComponent implements OnInit {
   selectViewOption(value:string){
 
     if(!(value=="-1")){
-      console.log("we have value ="+value);
+
       this.customerAnalyticsService.getCategoryWiseExpenditureForOrder(this.email,value).subscribe((response)=>{
         this.expense = response;
       });

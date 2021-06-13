@@ -5,27 +5,29 @@ import { ShoppingCartItem } from '../models/shopping-cart-item';
 import { Product } from '../models/product';
 import { ShoppingCart } from '../models/shopping-cart';
 import { Subject } from 'rxjs';
+import {UserService} from "../../core/services/user.service";
 
 @Injectable({
   providedIn: 'root',
 })
 export class ShoppingCartService {
   items: ShoppingCartItem[] = [];
+  cartID:string = "schoolmate-cart-t"+this.userService.email;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private userService:UserService) {}
 
   getCart(): ShoppingCartItem[] {
-    if (localStorage.getItem('cart') == null) {
+    if (localStorage.getItem(this.cartID) == null) {
       return this.items;
     } else {
-      this.items = JSON.parse(localStorage.getItem('cart')!);
+      this.items = JSON.parse(localStorage.getItem(this.cartID)!);
       this.populateFromLocalStorage();
       return this.items;
     }
   }
 
   addToCart(product: Product) {
-    if (localStorage.getItem('cart') == null) {
+    if (localStorage.getItem(this.cartID) == null) {
       this.items.push(
         new ShoppingCartItem(
           product.product_id,
@@ -37,7 +39,7 @@ export class ShoppingCartService {
           product.descript
         )
       );
-      localStorage.setItem('cart', JSON.stringify(this.items));
+      localStorage.setItem(this.cartID, JSON.stringify(this.items));
       return;
     } else {
       for (var item of this.items) {
@@ -49,7 +51,7 @@ export class ShoppingCartService {
               item.product_id
           );
           item.quantity++;
-          localStorage.setItem('cart', JSON.stringify(this.items));
+          localStorage.setItem(this.cartID, JSON.stringify(this.items));
           return;
         }
       }
@@ -64,7 +66,7 @@ export class ShoppingCartService {
           product.descript
         )
       );
-      localStorage.setItem('cart', JSON.stringify(this.items));
+      localStorage.setItem(this.cartID, JSON.stringify(this.items));
     }
 
     //todo
@@ -91,7 +93,7 @@ export class ShoppingCartService {
       if (item.title == product.title) {
         if (item.quantity > 1) {
           item.quantity--;
-          localStorage.setItem('cart', JSON.stringify(this.items));
+          localStorage.setItem(this.cartID, JSON.stringify(this.items));
           return;
         }
       }
@@ -102,7 +104,7 @@ export class ShoppingCartService {
     while (this.items.length > 0) {
       this.items.pop();
     }
-    localStorage.removeItem('cart');
+    localStorage.removeItem(this.cartID);
     // } else {
     //   return;
     // }
@@ -111,7 +113,7 @@ export class ShoppingCartService {
   populateFromLocalStorage() {
     let local_storage: ShoppingCartItem[] = [];
     let cart: ShoppingCartItem[] = [];
-    local_storage = JSON.parse(localStorage.getItem('cart')!);
+    local_storage = JSON.parse(localStorage.getItem(this.cartID)!);
     for (var item of local_storage) {
       cart.push(
         new ShoppingCartItem(
