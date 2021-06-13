@@ -14,7 +14,7 @@ export class ProductCardComponent implements OnInit {
   @Input()
   product: Product;
 
-  isAdmin: boolean = false;
+  isAdmin: boolean = true;
 
   @Output()
   delete = new EventEmitter<number>();

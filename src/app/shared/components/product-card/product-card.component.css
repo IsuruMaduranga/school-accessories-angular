@@ -5,7 +5,7 @@ img {
 
 .product-card {
     /* padding: 20px; */
-    margin: 10px 0;
+    margin: 10px 10px;
     border-radius: 10px;
     z-index: 10;
     box-shadow: 0 2px 3px #18181845;
@@ -31,6 +31,8 @@ img {
     flex-direction: column;
     align-items: center;
     padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .product-btn-edit {

@@ -6,7 +6,7 @@
         <div class="product-card-title">{{product.title}}</div>
         <div class="prooduct-card-text-price">{{product.price | currency:'Rs.'}}</div>
 
-        <div *ngIf="!isAdmin" class="add-button-container">
+        <div *ngIf="isAdmin" class="add-button-container">
             <button class="btn btn-sm add-btn" (click)="addToCart(product.product_id)">Add
                 to
                 Cart</button>
