@@ -1,5 +1,5 @@
 export interface Order {
-    customer_id: number;
+    customerId: number;
     name: string;
     mobile_number: string;
     email: string;
@@ -7,4 +7,3 @@ export interface Order {
     total_price: number;
     order_date: string;
   }
-  
