@@ -42,5 +42,39 @@ input.ng-touched.ng-invalid {
 ng-select.ng-touched.ng-invalid {
     border: 1px solid red;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.form-title {
+    color: #595959;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.horizontal-line {
+    background-color: #6e7d88;
+    height: 2px;
+    margin-bottom: 20px;
+}
+
+.outlet {
+    background-color: #5a8bbc;
+    /* background-image: url("assets/imgs/bg9.jpg");
+    background-repeat: repeat-y;
+    background-size: 100% 100%; */
+}
+
+.form-horizontal {
+    background-color: #fcfcfc;
+    border-radius: 2px;
+    z-index: 10;
+    box-shadow: 0 2px 3px #3a393945;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

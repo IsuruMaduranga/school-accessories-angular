@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../../models/product';
 import Swal from 'sweetalert2';
-import {ShoppingCartService} from "../../services/shopping-cart.service";
+import { ShoppingCartService } from '../../services/shopping-cart.service';
 
 @Component({
   selector: 'app-product-card',
@@ -21,7 +21,7 @@ export class ProductCardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private prodcutDataService: ProductDataService,// private authService: AuthService
+    private prodcutDataService: ProductDataService, // private authService: AuthService
     private shoppingCartService: ShoppingCartService
   ) {}
 
@@ -32,18 +32,19 @@ export class ProductCardComponent implements OnInit {
   deleteProduct(pid: number) {
     Swal.fire({
       title: 'Are you sure you want to delete the product?',
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'yes',
-      cancelButtonText: 'Cancel',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
-      if (result.value) {
+      if (result.isConfirmed) {
         this.delete.emit(pid);
-        Swal.fire('Product Deletion Successfully!', 'success');
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire('Cancelled', 'The Product Deletion was Cancelled', 'error');
+        Swal.fire('Deleted!', 'Product has been deleted.', 'success');
       }
     });
   }
+
   editproduct(pid: number) {
     this.router.navigate(['admin/edit-product/' + pid]);
   }

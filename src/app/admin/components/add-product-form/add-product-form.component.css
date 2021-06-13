@@ -1,14 +1,69 @@
+.select-control {
+    height: 40px;
+    flex: 1;
+}
+
 .plus-btn {
+    border: 2px solid;
     border-radius: 50%;
-    background-color: #0452aa;
-    border: none;
-    color: white;
-    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-color: rgb(48, 133, 214);
+    margin: 0 15px;
+}
+
+.plus-btn-text {
+    padding: 0px;
+    margin-top: -5px;
+    color: rgb(48, 133, 214);
+    line-height: 0.75em;
+    font-size: 30px;
+    font-style: bold;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 8px;
-    margin: 3px 10px;
-    height: 3px;
-    width: 5px;
+}
+
+.plus-btn:hover {
+    cursor: pointer;
+    background-color: rgb(48, 133, 214);
+}
+
+.plus-btn-text:hover {
+    color: white;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    outline-style: dashed;
+}
+
+.product-btn-save {
+    width: 50%;
+    text-align: center;
+    background-color: rgb(48, 133, 214);
+    color: white;
+    margin-right: 10px;
+}
+
+.product-btn-cancel {
+    width: 50%;
+    text-align: center;
+    background-color: #6e7d88;
+    color: white;
+}
+
+.container {
+    width: 80%;
+}
+
+.edit-product-button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    margin-bottom: 0px;
+    /* outline-style: solid; */
 }
