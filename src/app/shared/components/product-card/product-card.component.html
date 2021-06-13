@@ -1,16 +1,21 @@
-<div class="card">
-    <!-- <div class="tag">New</div> -->
-    <div class="card-inner-container">
-        <h5 class="card-title">{{product.title}}</h5>
+<div class="product-card">
+    <div class="product-img">
         <img class="card-img-top" [src]="product.image" alt="Card image cap">
-        <p class="card-text-price">{{product.price | currency:'Rs.'}}</p>
-        <!-- <p>{{product.description}}</p> -->
-        <button *ngIf="isAdmin" class="btn btn-primary btn-sm add-btn" (click)="addToCart(product.product_id)">Add to
-            Cart</button>
-        <p></p>
-        <div class="button-container">
-            <button *ngIf="isAdmin" class="btn btn-primary btn-sm product-btn" (click)="editproduct(product.product_id)">Edit</button>
-            <button *ngIf="isAdmin" class="btn btn-danger btn-sm product-btn" (click)="deleteProduct(product.product_id)">Delete</button>
+    </div>
+    <div class="product-card-inner-container">
+        <div class="product-card-title">{{product.title}}</div>
+        <div class="prooduct-card-text-price">{{product.price | currency:'Rs.'}}</div>
+
+        <div *ngIf="isAdmin" class="add-button-container">
+            <button class="btn btn-sm add-btn" (click)="addToCart(product.product_id)">Add
+                to
+                Cart</button>
         </div>
+
+        <div *ngIf="isAdmin" class="product-button-container">
+            <button class="btn btn-sm product-btn-edit" (click)="editproduct(product.product_id)">Edit</button>
+            <button class="btn btn-sm product-btn-delete" (click)="deleteProduct(product.product_id)">Delete</button>
+        </div>
+
     </div>
 </div>
