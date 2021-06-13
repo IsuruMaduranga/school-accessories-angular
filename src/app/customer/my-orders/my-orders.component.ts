@@ -20,8 +20,12 @@ export class MyOrdersComponent implements OnInit {
   myorders:any;
   pageOfItems:Array<any>;
   expand:boolean=false;
+  give:boolean = false;
   index:number;
   expandedOrder:TOrder;
+  visibilityArr:boolean[];
+  lastShown:number;
+
   filter = new FormControl('');
 
   page = 1;
@@ -38,6 +42,9 @@ export class MyOrdersComponent implements OnInit {
 
     ngOnInit():void {
       this.fetchPosts();
+      for(var i = 0;i<this.myorders.length;i++){
+        this.visibilityArr.push(false);
+      }
 
   }
 
@@ -45,13 +52,32 @@ export class MyOrdersComponent implements OnInit {
   fetchPosts(){
     this.orderService.getOrdersBy().subscribe((myorders) => {
       this.myorders =myorders;this.myorders=this.myorders.reverse();
+
     });
   }
 
+  expandOrder(i:number){
+
+    this.lastShown=i;
+    this.visibilityArr[i]=!this.visibilityArr[i];
+
+  }
+  getTTT():any{
+    for(var i=0;i<this.myorders.length;i++){
+      if( this.visibilityArr[i]==true){
+        return i;
+      }
+    }
+  }
   expandCol(orderItem:TOrder,i:number){
+    console.log("here working!!!");
     this.expandedOrder=orderItem;
+    this.give=true;
     this.expand=!this.expand;
+
     this.index = i;
+    console.log(this.expand +" "+this.index);
+
   }
   onTableDataChange(event:any){
     this.page = event;

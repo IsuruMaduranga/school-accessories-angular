@@ -7,9 +7,12 @@ import {RouterModule} from "@angular/router";
 import {ShoppingCartComponent} from "../shopping/shopping-cart/shopping-cart.component";
 import { BrowserModule } from '@angular/platform-browser';
 import {NgbTypeaheadModule} from "@ng-bootstrap/ng-bootstrap";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { OrderItemsComponent } from './my-orders/order-items/order-items.component';
 import {NgxPaginationModule} from "ngx-pagination";
+import {NgxChartsModule} from "@swimlane/ngx-charts";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { CustomerAnalyticsComponent } from './customer-analytics/customer-analytics.component';
 
 
 @NgModule({
@@ -17,10 +20,11 @@ import {NgxPaginationModule} from "ngx-pagination";
     MyOrdersComponent,
     OrderItemsComponent,
     OrderItemsComponent,
+    CustomerAnalyticsComponent,
 
   ],
   imports: [
-    CommonModule, BrowserModule, NgbTypeaheadModule, ReactiveFormsModule,NgxPaginationModule
+    CommonModule, BrowserModule, NgbTypeaheadModule, ReactiveFormsModule, NgxPaginationModule, NgxChartsModule, BrowserAnimationsModule, FormsModule
   ]
   , providers: [
     OrderPurchaseService

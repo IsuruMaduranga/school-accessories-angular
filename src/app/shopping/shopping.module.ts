@@ -14,6 +14,7 @@ import { CartCheckoutComponent } from './cart-checkout/cart-checkout.component';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { CoreModule } from '../core/core.module';
 import { ProductQuantityComponent } from '../shared/product-quantity/product-quantity.component';
+import {ProfileLoaderService} from "../shared/services/profile-loader.service";
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ProductQuantityComponent } from '../shared/product-quantity/product-qua
     ShoppingCartService,
     ProductQuantityComponent,
     ShoppingFormComponent,
+    ProfileLoaderService
   ],
 })
 export class ShoppingModule {}

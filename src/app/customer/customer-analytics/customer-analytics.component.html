@@ -1,0 +1,101 @@
+<div class="card">
+  <td>You have {{statics.order_count}} orders</td>
+  <td>You have expend Rs. {{statics.total_expense}} so far.</td>
+</div>
+<div class="card" style="width: 200px">
+  Select Order :
+  <select [(ngModel)]="orderIDs.order_id" (ngModelChange)="(selectViewOption(orderIDs.order_id))" >
+    <option value=-1>All orders</option>
+    <option *ngFor="let orderId of orderIDs">{{orderId.order_id}} </option>
+  </select>
+</div>
+
+
+
+
+<!--<div>-->
+<!--  <h4>Product Details:</h4>-->
+<!--  <table class="TFtable">-->
+<!--    <tr >-->
+<!--      <th>Name</th> <th>Store</th>  <th>Price</th> <th>Model</th>-->
+<!--    </tr>-->
+<!--    <tr  *ngFor="let tit of ti">-->
+<!--      <td>Prod.title</td>-->
+<!--      <td>Prod.store</td>-->
+<!--      <td>Prod.price</td>-->
+<!--      <td>Prod.model</td>-->
+<!--    </tr>-->
+
+<!--  </table>-->
+<!--</div>-->
+<!-- Primary -->
+<!--<div class="btn-group">-->
+<!--  <button-->
+<!--    type="button"-->
+<!--     id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"-->
+<!--    class="btn btn-primary dropdown-toggle"-->
+<!--    data-mdb-toggle="dropdown"-->
+<!--    aria-expanded="false"-->
+
+<!--  >-->
+<!--    Select Analytic Option-->
+<!--  </button>-->
+<!--  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >-->
+<!--    <li><a class="dropdown-item" href="#">Category Based</a></li>-->
+<!--    <li><a class="dropdown-item" href="#">Order Based</a></li>-->
+<!--    <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+<!--    <li>-->
+<!--      <hr class="dropdown-divider" />-->
+<!--    </li>-->
+<!--    <li><a class="dropdown-item" href="#">Separated link</a></li>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<!--&lt;!&ndash; Primary &ndash;&gt;-->
+<!--<div class="btn-group">-->
+<!--  <button-->
+<!--    type="button"-->
+<!--    id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"-->
+<!--    class="btn btn-primary dropdown-toggle"-->
+<!--    data-mdb-toggle="dropdown"-->
+<!--    aria-expanded="false"-->
+
+<!--  >-->
+<!--    Select Option-->
+<!--  </button>-->
+<!--  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2" >-->
+<!--    <li><a class="dropdown-item" href="#">Action</a></li>-->
+<!--    <li><a class="dropdown-item" href="#">Another action</a></li>-->
+<!--    <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+<!--    <li>-->
+<!--      <hr class="dropdown-divider" />-->
+<!--    </li>-->
+<!--    <li><a class="dropdown-item" href="#">Separated link</a></li>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<ngx-charts-bar-vertical class="left-element"
+  [view]="[500,200]"
+  [results]="expense"
+  [xAxisLabel]="'Category'"
+  [legendTitle]="'Categories'"
+  [yAxisLabel]="'Expense'"
+  [legend]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  [xAxis]="true"
+  [yAxis]="true"
+  [gradient]="false">
+</ngx-charts-bar-vertical>
+<ngx-charts-pie-chart class="right-element"
+  [results]="expense"
+  [legend]="true"
+  [legendTitle]="'Product Sale Report'"
+  [view]="[1000,300]"
+  [labels]="true" >
+</ngx-charts-pie-chart>
+<br><br><br><br><br><br>   <br><br>
+
+<ngx-charts-pie-grid [results]="expense" [view]="[700,200]" class="forgrid"></ngx-charts-pie-grid>

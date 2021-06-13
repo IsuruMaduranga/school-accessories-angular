@@ -10,7 +10,6 @@ const httpOptions = {
     'Content-Type': 'application/json'
   })
 };
-
 @Injectable({
   providedIn: 'root'
 })
@@ -23,7 +22,7 @@ export class UserService {
   }
 
   login(loginReq: LoginRequest): Observable<any> {
-    let result =  this.http.post('http://localhost:8081/profile/login',JSON.stringify(loginReq),httpOptions);
+    let result =  this.http.post('http://localhost:8087/profile/login',JSON.stringify(loginReq),httpOptions);
     return result;
   }
 
