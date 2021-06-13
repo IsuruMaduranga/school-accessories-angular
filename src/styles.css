@@ -55,7 +55,7 @@ ng-select.ng-touched.ng-invalid {
     margin-bottom: 20px;
 }
 
-.outlet {
+body {
     background-color: #5a8bbc;
     /* background-image: url("assets/imgs/bg9.jpg");
     background-repeat: repeat-y;
