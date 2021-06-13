@@ -49,6 +49,11 @@
   </div>
 
 </div>
-<div *ngIf="expand" class="right-element">
-  <app-order-items [order]="expandedOrder"></app-order-items>
+<div *ngIf="expand"  class="right-element">
+  <app-order-items [order]="this.myorders[this.index]"></app-order-items>
 </div>
+<!--<div *ngIf="getTTT()" class="right-element">-->
+<!--  <app-order-items [order]="this.myorders[getTTT()]"></app-order-items>-->
+<!--</div>-->
+
+

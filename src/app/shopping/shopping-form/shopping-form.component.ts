@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { OrderPurchaseService } from 'src/app/shared/services/order-purchase.service';
 import { Order } from 'src/app/shared/models/order';
 import {ShoppingCart} from "../../shared/models/shopping-cart";
+import {ProfileLoaderService} from "../../shared/services/profile-loader.service";
 
 @Component({
   selector: 'app-shopping-form',
@@ -64,7 +65,8 @@ export class ShoppingFormComponent implements OnInit {
   constructor(
     private router: Router,
     private shoppingCartService: ShoppingCartService,
-    private orderPurchaseService: OrderPurchaseService
+    private orderPurchaseService: OrderPurchaseService,
+    private profileLoaderService:ProfileLoaderService
   ) {
   }
 
@@ -90,11 +92,16 @@ export class ShoppingFormComponent implements OnInit {
       yearExpire: new FormControl(null, Validators.required),
       cardType: new FormControl(),
     });
+
+    this.profileLoaderService.getUserID("customer1@gmail.com").subscribe((response)=>{
+      console.log(response);
+      this.order.customer_id=response.user_id;
+    });
   }
 
   purchaseCart() {
     //console.log(this.shoppingForm.value);
-    this.order.customer_id = 0;
+
     this.order.name = this.shoppingForm.value.userName;
     this.order.email = this.shoppingForm.value.email;
     this.order.mobile_number = this.shoppingForm.value.mobileNo;

@@ -22,10 +22,10 @@ export class UserService {
   }
 
   login(loginReq: LoginRequest): Observable<any> {
-    let result =  this.http.post('http://localhost:8081/profile/login',JSON.stringify(loginReq),httpOptions);
+    let result =  this.http.post('http://localhost:8087/profile/login',JSON.stringify(loginReq),httpOptions);
     return result;
   }
-  
+
   get type(): any {
     let output;
     let token = localStorage.getItem('token');
