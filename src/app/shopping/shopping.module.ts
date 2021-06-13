@@ -32,10 +32,7 @@ import {ProfileLoaderService} from "../shared/services/profile-loader.service";
     CoreModule,
     AdminModule,
     CommonModule,
-    SharedModule,
-    RouterModule.forChild([
-      { path: 'shopping-cart', component: ShoppingCartComponent },
-    ]),
+    SharedModule
   ],
   providers: [
     ShoppingCartService,

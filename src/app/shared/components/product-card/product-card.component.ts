@@ -46,7 +46,7 @@ export class ProductCardComponent implements OnInit {
   }
 
   editproduct(pid: number) {
-    this.router.navigate(['admin/edit-product/' + pid]);
+    this.router.navigate(['edit-product/' + pid]);
   }
 
   addToCart(pid: number) {
