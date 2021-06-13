@@ -1,7 +1,7 @@
 @import "~@ng-select/ng-select/themes/default.theme.css";
 .card {
     padding: 20px;
-    margin: 20px 0;
+    margin: 20px 10px;
     border-radius: 2px;
     z-index: 10;
     box-shadow: 0 2px 3px #3a393945;

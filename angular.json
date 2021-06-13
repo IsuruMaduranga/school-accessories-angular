@@ -73,9 +73,11 @@
           "configurations": {
             "production": {
               "browserTarget": "school-accessories:build:production"
+              // "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
               "browserTarget": "school-accessories:build:development"
+              // "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
