@@ -1,7 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ShoppingModule } from './shopping/shopping.module';
@@ -17,6 +17,8 @@ import { AdminAnalysisModule } from './admin-analysis/admin-analysis.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CustomerModule} from "./customer/customer.module";
+import { AuthInterceptor } from './auth-interceptor.service';
+import { RegisterComponent } from './core/components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import {CustomerModule} from "./customer/customer.module";
     RouterModule.forRoot([
       { path: '', component: LoginComponent },
       { path: 'products', component: ProductsComponent },
+      { path: 'register', component: RegisterComponent },
     ]),
     NgSelectModule,
     FormsModule,
@@ -44,7 +47,7 @@ import {CustomerModule} from "./customer/customer.module";
     NgxChartsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
