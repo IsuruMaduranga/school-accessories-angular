@@ -22,7 +22,7 @@ export class UserService {
   }
 
   login(loginReq: LoginRequest): Observable<any> {
-    let result =  this.http.post('http://localhost:8087/profile/login',JSON.stringify(loginReq),httpOptions);
+    let result =  this.http.post('http://localhost:8081/profile/login',JSON.stringify(loginReq),httpOptions);
     return result;
   }
 
@@ -30,16 +30,21 @@ export class UserService {
     let result =  this.http.post('http://localhost:8081/profile/register',JSON.stringify(regReq),httpOptions);
     return result;
   }
-  
+
+  users(): Observable<any> {
+    let result =  this.http.get('http://localhost:8081/profile/get-profiles',httpOptions);
+    return result;
+  }
+
   get type(): any {
     let output;
     let token = localStorage.getItem('token');
     if (!token) {
       output = null;
     } else {
-      output = this.jwtHelper.decodeToken(token);
+      output = this.jwtHelper.decodeToken(token).authorities[0].authority;
     }
-    return output.authorities[0].authority;
+    return output;
   }
 
 
@@ -49,9 +54,9 @@ export class UserService {
     if (!token) {
       output = null;
     } else {
-      output = this.jwtHelper.decodeToken(token);
+      output = this.jwtHelper.decodeToken(token).sub;
     }
-    return output.sub;
+    return output;
   }
 
   get email(): any {
@@ -60,9 +65,9 @@ export class UserService {
     if (!token) {
       output = null;
     } else {
-      output = this.jwtHelper.decodeToken(token);
+      output = this.jwtHelper.decodeToken(token).email;
     }
-    return output.email;
+    return output;
   }
 
 

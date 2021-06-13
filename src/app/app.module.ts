@@ -1,4 +1,4 @@
-import { RouterModule } from '@angular/router';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -9,7 +9,6 @@ import { ProductsComponent } from './shopping/products/products.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
-import { LoginComponent } from './core/components/login/login.component';
 import { EditProductFormComponent } from './admin/components/edit-product-form/edit-product-form.component';
 import { AddProductFormComponent } from './admin/components/add-product-form/add-product-form.component';
 import { CommonModule } from "@angular/common";
@@ -18,7 +17,6 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CustomerModule} from "./customer/customer.module";
 import { AuthInterceptor } from './auth-interceptor.service';
-import { RegisterComponent } from './core/components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -33,11 +31,6 @@ import { RegisterComponent } from './core/components/register/register.component
     ShoppingModule,
     CustomerModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: LoginComponent },
-      { path: 'products', component: ProductsComponent },
-      { path: 'register', component: RegisterComponent },
-    ]),
     NgSelectModule,
     FormsModule,
     ReactiveFormsModule,

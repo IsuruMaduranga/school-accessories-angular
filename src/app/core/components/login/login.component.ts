@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
       }
     }, e => {
       if (e.error instanceof ProgressEvent) {
+        console.log(e);
         alert('An error occurred!');
       } else {
         alert(e.error.message);

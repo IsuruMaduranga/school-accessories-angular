@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RegisterRequest } from 'src/app/shared/models/RegisterRequest';
 import { UserService } from '../../services/user.service';
 
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,private router:Router) { }
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -44,7 +45,8 @@ export class RegisterComponent implements OnInit {
     );
 
     this.userService.register(regReq).subscribe(res => {
-      console.log(res);
+      alert("Successfully registered")
+      this.router.navigate(['/login']);
     }, e => {
       if (e.error instanceof ProgressEvent) {
         alert('An error occurred!');
