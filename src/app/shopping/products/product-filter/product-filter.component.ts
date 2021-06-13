@@ -9,6 +9,7 @@ import { CategoryService } from 'src/app/shared/services/category.service';
 export class ProductFilterComponent implements OnInit {
   categories: any;
   @Input('category') category: any;
+
   constructor(private categoryService: CategoryService) {}
 
   ngOnInit(): void {
