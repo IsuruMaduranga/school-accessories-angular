@@ -1,60 +1,63 @@
-<div class="outlet">
-    <div class="container">
-        <br>
-        <form class="form-horizontal p-3 mb-5 rounded" #f="ngForm" (ngSubmit)="f.form.valid && onClick(buttonType)">
-            <h4 class="form-title">Edit Product</h4>
-            <div class="horizontal-line"></div>
-            <div class="row">
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="title">Product Title :</label>
-                        <input #title="ngModel" type="text" class="form-control" placeholder="Product Title" ngModel name="title" [(ngModel)]="product.title" required>
-                        <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
-                            Title is required.
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="category">Price : Rs.</label>
-                        <input type="text" class="form-control" placeholder="price" name="price" #price ngModel [(ngModel)]="product.price" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="category">Category :</label>
-                        <div class="button-container ">
-                            <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
-                                <option value=""></option>
-                                <option *ngFor="let c of categories" [value]="c.name">
-                                    {{ c.name }}
-                                </option>
-                            </select>
-                            <div class="plus-btn" (click)="onClick('add-product-category')" role="button">
-                                <div class="plus-btn-text">+</div>
+<div>
+    <app-navbar></app-navbar>
+    <div class="outlet">
+        <div class="container">
+            <br>
+            <form class="form-horizontal p-3 mb-5 rounded" #f="ngForm" (ngSubmit)="f.form.valid && onClick(buttonType)">
+                <h4 class="form-title">Edit Product</h4>
+                <div class="horizontal-line"></div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="title">Product Title :</label>
+                            <input #title="ngModel" type="text" class="form-control" placeholder="Product Title" ngModel name="title" [(ngModel)]="product.title" required>
+                            <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+                                Title is required.
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="category">Price : Rs.</label>
+                            <input type="text" class="form-control" placeholder="price" name="price" #price ngModel [(ngModel)]="product.price" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category :</label>
+                            <div class="button-container ">
+                                <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
+                                    <option value=""></option>
+                                    <option *ngFor="let c of categories" [value]="c.name">
+                                        {{ c.name }}
+                                    </option>
+                                </select>
+                                <div class="plus-btn" (click)="onClick('add-product-category')" role="button">
+                                    <div class="plus-btn-text">+</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="descript">Product description :</label>
+                            <input #descript="ngModel" [(ngModel)]="product.descript" name="descript" id="descript" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Product Image :</label>
+                            <input type="file" class="form-control" placeholder="Product Picture" #image accept="image/*" name="image" (change)="handleFileInput($event)">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="descript">Product description :</label>
-                        <input #descript="ngModel" [(ngModel)]="product.descript" name="descript" id="descript" type="text" class="form-control">
+                    <div class="col-3">
+                        <p>Original Image :</p>
+                        <img [src]="product.image" style="width:70%;height: 60%;">
+    
                     </div>
-                    <div class="form-group">
-                        <label for="image">Product Image :</label>
-                        <input type="file" class="form-control" placeholder="Product Picture" #image accept="image/*" name="image" (change)="handleFileInput($event)">
+                    <div class="col-3">
+                        <p>New Image :</p>
+                        <img [src]="imageUrl" style="width:250px;height: 200px;">
                     </div>
                 </div>
-                <div class="col-3">
-                    <p>Original Image :</p>
-                    <img [src]="product.image" style="width:70%;height: 60%;">
-
+                <div class="edit-product-button-container">
+                    <button [disabled]="!f.valid" class="btn product-btn-save" (click)="onClick('save')">Save</button>
+                    <button class="btn product-btn-cancel " (click)="onClick('cancel')">Cancel</button>
                 </div>
-                <div class="col-3">
-                    <p>New Image :</p>
-                    <img [src]="imageUrl" style="width:250px;height: 200px;">
-                </div>
-            </div>
-            <div class="edit-product-button-container">
-                <button [disabled]="!f.valid" class="btn product-btn-save" (click)="onClick('save')">Save</button>
-                <button class="btn product-btn-cancel " (click)="onClick('cancel')">Cancel</button>
-            </div>
-
-        </form>
+    
+            </form>
+        </div>
     </div>
 </div>
