@@ -1,4 +1,13 @@
-/* .list {
-    background-color: #2b547c;
-    color: white;
-} */
+.list-group-item.active {
+    background-color: #5a8bbc;
+    border-color: #5a8bbc;
+}
+
+.list-group-item {
+    background-color: rgb(241, 241, 241);
+}
+
+.sticky-top {
+    box-shadow: 0 3px 3px #18181845;
+    border-radius: 0px;
+}

@@ -78,3 +78,21 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.btn-register {
+    background-color: #5a8bbc;
+    border-radius: 40px;
+    width: 75px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    margin-top: 3px;
+    /* outline-style: solid; */
+}
+
+.vertical-line {
+    background-color: #545455;
+    height: 30px;
+    width: 2px;
+    /* margin-bottom: 20px; */
+}
