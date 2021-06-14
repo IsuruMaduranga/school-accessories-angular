@@ -1,3 +1,4 @@
+import { CoreModule } from './../core/core.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminDataTableComponent } from './admin-data-table/admin-data-table.component';
@@ -8,12 +9,8 @@ import { AdminChartsComponent } from './admin-charts/admin-charts.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
 @NgModule({
-  declarations: [
-    AdminDataTableComponent,
-    AdminChartsComponent,
-  ],
+  declarations: [AdminDataTableComponent, AdminChartsComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -21,11 +18,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     NgbModule,
     NgxChartsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CoreModule,
   ],
-  providers: [
-    AdminDataTableComponent,
-    AdminChartsComponent
-  ],
+  providers: [AdminDataTableComponent, AdminChartsComponent],
 })
-export class AdminAnalysisModule { }
+export class AdminAnalysisModule {}

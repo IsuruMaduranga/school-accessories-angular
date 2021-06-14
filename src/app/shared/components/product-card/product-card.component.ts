@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Product } from '../../models/product';
 import Swal from 'sweetalert2';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-product-card',
@@ -13,20 +14,20 @@ import { ShoppingCartService } from '../../services/shopping-cart.service';
 export class ProductCardComponent implements OnInit {
   @Input()
   product: Product;
-
-  isAdmin: boolean = true;
+  userType: String;
 
   @Output()
   delete = new EventEmitter<number>();
 
   constructor(
     private router: Router,
-    private prodcutDataService: ProductDataService, // private authService: AuthService
+    private prodcutDataService: ProductDataService,
+    private userService: UserService,
     private shoppingCartService: ShoppingCartService
   ) {}
 
   ngOnInit(): void {
-    // isAdmin = authService.
+    this.userType = this.userService.type;
   }
 
   deleteProduct(pid: number) {

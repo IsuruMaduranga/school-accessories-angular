@@ -1,34 +1,27 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-16">
-            <div class="card">
-                <div class="logo mb-3">
-                    <div class="col-md-12 text-center">
-                        <h1>Category-wise Total Amount of Orders </h1>
+<div>
+    <app-navbar></app-navbar>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-16">
+                <div class="card">
+                    <div class="logo mb-3">
+                        <div class="col-md-12 text-center">
+                            <h1>Category-wise Total Amount of Orders </h1>
+                        </div>
                     </div>
-                </div>
                     <table>
                         <tr>
                             <td>
-                                <ngx-charts-bar-vertical
-                                [view]="[1000,400]"
-                                [results]="categoriesAmount"
-                                [xAxisLabel]="'Categories'"
-                                [legendTitle]="'Categories'"
-                                [yAxisLabel]="'Total Amount (Rs.)'"
-                                [legend]="true"
-                                [showXAxisLabel]="true"
-                                [showYAxisLabel]="true"
-                                [xAxis]="true"
-                                [yAxis]="true"
-                                [gradient]="true">
-                            </ngx-charts-bar-vertical>
+                                <ngx-charts-bar-vertical [view]="[1000,400]" [results]="categoriesAmount" [xAxisLabel]="'Categories'" [legendTitle]="'Categories'" [yAxisLabel]="'Total Amount (Rs.)'" [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true"
+                                    [gradient]="true">
+                                </ngx-charts-bar-vertical>
                             </td>
                         </tr>
                     </table>
 
+                </div>
             </div>
         </div>
     </div>
 </div>
-
