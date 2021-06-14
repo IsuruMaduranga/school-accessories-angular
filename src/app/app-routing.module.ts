@@ -27,8 +27,8 @@ const routes: Routes = [
     component: UsersComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ADMIN']
-    }
+      roles: ['ADMIN'],
+    },
   },
 
   {
@@ -36,8 +36,8 @@ const routes: Routes = [
     component: ProductsComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ADMIN', 'USER']
-    }
+      roles: ['ADMIN', 'USER'],
+    },
   },
 
   {
@@ -45,8 +45,8 @@ const routes: Routes = [
     component: ShoppingFormComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['USER']
-    }
+      roles: ['USER'],
+    },
   },
 
   {
@@ -54,8 +54,8 @@ const routes: Routes = [
     component: CartCheckoutComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['USER']
-    }
+      roles: ['USER'],
+    },
   },
 
   {
@@ -63,7 +63,7 @@ const routes: Routes = [
     component: AdminDataTableComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ADMIN']
+      roles: ['ADMIN'],
     },
   },
 
@@ -72,8 +72,8 @@ const routes: Routes = [
     component: AdminChartsComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ADMIN']
-    }
+      roles: ['ADMIN'],
+    },
   },
 
   {
@@ -81,8 +81,8 @@ const routes: Routes = [
     component: MyOrdersComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['USER']
-    }
+      roles: ['USER'],
+    },
   },
 
   {
@@ -90,16 +90,17 @@ const routes: Routes = [
     component: CustomerAnalyticsComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['USER']
-    }
+      roles: ['USER'],
+    },
   },
 
   {
     path: 'shopping-cart',
     component: ShoppingCartComponent,
+    canActivate: [AuthGuard],
     data: {
-      roles: ['USER']
-    }
+      roles: ['USER'],
+    },
   },
 
   {
@@ -107,22 +108,22 @@ const routes: Routes = [
     component: AddProductFormComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ADMIN']
-    }
+      roles: ['ADMIN'],
+    },
   },
 
-  { path: 
-    'edit-product/:id', 
+  {
+    path: 'edit-product/:id',
     component: EditProductFormComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ADMIN']
-    }
-  }
+      roles: ['ADMIN'],
+    },
+  },
 ];
 
 @NgModule({
   imports: [FormsModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
