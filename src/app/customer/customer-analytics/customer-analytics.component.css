@@ -118,3 +118,13 @@
   position: absolute;
   right:400px;
 }
+.right{
+  display: inline-block;
+  position: absolute;
+  right: 0px;
+}
+.left{
+  display: inline-block;
+  position: absolute;
+  left: 0px;
+}
