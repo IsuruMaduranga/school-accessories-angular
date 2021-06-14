@@ -29,7 +29,7 @@
             <ng-container matColumnDef="role">
                 <th mat-header-cell *matHeaderCellDef> Role </th>
                 <td mat-cell *matCellDef="let element">
-                    <mat-slide-toggle>{{element.user_type}}</mat-slide-toggle>
+                    <mat-slide-toggle (change)="onChange(element)" [checked]="element.user_type=='ADMIN'" [disabled]="element.email==currentUser">{{element.user_type}}</mat-slide-toggle>
                 </td>
             </ng-container>
 

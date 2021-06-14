@@ -31,6 +31,11 @@ export class UserService {
     return result;
   }
 
+  change(changeReq: any): Observable<any> {
+    let result =  this.http.post('http://localhost:8081/profile/change-role',JSON.stringify(changeReq),httpOptions);
+    return result;
+  }
+
   users(): Observable<any> {
     let result =  this.http.get('http://localhost:8081/profile/get-profiles',httpOptions);
     return result;
