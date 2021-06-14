@@ -18,13 +18,13 @@ export class CategoryService {
     console.log('error--->' + error.error);
     if (error.error instanceof ErrorEvent) {
       // Client-side errors
-      errorMessage = `Error: ${error.error.message}`;
+      errorMessage = `Error found`;
     } else {
       // Server-side errors
       if (error.status == 400) {
         errorMessage = 'Product Category is already exists';
       } else {
-        errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+        errorMessage = `Server error`;
       }
     }
     Swal.fire('Error!', errorMessage, 'warning');
