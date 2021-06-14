@@ -1,3 +1,7 @@
 .btn btn-primary {
     padding-left: 10px;
 }
+
+.table-striped {
+    background-color: white;
+}

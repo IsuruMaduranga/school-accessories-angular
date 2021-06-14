@@ -1,24 +1,28 @@
 .container {
-  position: fixed;
-  left: 350px;
-  padding: 0;
-  margin: 0;
-  background-color: #ff00ff;
+    position: fixed;
+    left: 350px;
+    padding: 0;
+    margin: 0;
+    background-color: #ff00ff;
 }
 
 .left-element {
-  display: inline-block;
-  position: absolute;
-  left: 20px;
+    display: inline-block;
+    position: absolute;
+    left: 20px;
 }
 
 .right-element {
-  width: 30%;
-  display: inline-block;
-  position: absolute;
-  right:50px;
+    width: 30%;
+    display: inline-block;
+    position: absolute;
+    right: 50px;
 }
-.forgrid{
 
-  left:20px
+.forgrid {
+    left: 20px;
+}
+
+.card-description {
+    color: black;
 }
