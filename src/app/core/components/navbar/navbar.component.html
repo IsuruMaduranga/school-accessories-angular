@@ -60,12 +60,13 @@
             </li>
             <li class="nav-item dropdown ml-auto" *ngIf="!none">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{name}}
+                    <i class="bi bi-person-circle"> {{name}}</i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="#"><i class="bi bi-wrench"> Settings</i></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+                    <a class="dropdown-item" href="#" (click)="logout()"><i class="bi bi-box-arrow-right">
+                            Logout</i></a>
                 </div>
             </li>
         </ul>

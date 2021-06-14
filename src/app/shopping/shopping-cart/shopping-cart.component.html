@@ -5,7 +5,7 @@
     <h4>Your Shopping Cart is empty</h4><br>
     <a class=" btn btn-primary " style="color:white " (click)="navigateToHome()">explore products</a>
 </div>
-<div *ngIf="cart$.items.length" class="card" style="width: 80%;">
+<div *ngIf="cart$.items.length" class="form-horizontal p-3 mb-5 rounded" style="width: 80%;">
     <div class="card-body">
         <p>
             You have {{ cart$.totalItemsCount }} items in your shopping cart.

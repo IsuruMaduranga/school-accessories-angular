@@ -1,18 +1,16 @@
 <div>
     <app-navbar></app-navbar>
-
-    <div class="card">
-        <td>You have {{statics.order_count}} orders</td>
-        <td>You have expend Rs. {{statics.total_expense}} so far.</td>
+     <br>
+    <div class="card-title" style="color:white">
+        <td>You have {{statics.order_count}} orders. Your total expense is Rs. {{statics.total_expense}} so far.</td>
     </div>
-    <div class="card" style="width: 200px">
-        Select Order :
-        <select [(ngModel)]="orderIDs.order_id" (ngModelChange)="(selectViewOption(orderIDs.order_id))">
+    <div class="card left" style="width: 200px">
+      Select Order:
+      <select  [(ngModel)]="orderIDs.order_id" (ngModelChange)="(selectViewOption(orderIDs.order_id))" >
       <option value=-1>All orders</option>
       <option *ngFor="let orderId of orderIDs">{{orderId.order_id}} </option>
     </select>
     </div>
-</div>
 
 
 
@@ -78,13 +76,16 @@
 <!--    <li><a class="dropdown-item" href="#">Separated link</a></li>-->
 <!--  </div>-->
 <!--</div>-->
-
-
-<ngx-charts-bar-vertical class="left-element" [view]="[500,200]" [results]="expense" [xAxisLabel]="'Category'" [legendTitle]="'Categories'" [yAxisLabel]="'Expense'" [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true"
+<div class="container right">
+<div class ="card ">
+<ngx-charts-bar-vertical class="left-element" [view]="[500,200]" [results]="expense" [xAxisLabel]="'Category'"  [yAxisLabel]="'Expense'"  [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true"
     [gradient]="false">
 </ngx-charts-bar-vertical>
-<ngx-charts-pie-chart class="right-element" [results]="expense" [legend]="true" [legendTitle]="'Product Sale Report'" [view]="[1000,300]" [labels]="true">
+<ngx-charts-pie-chart class="right-element" [results]="expense"   [view]="[1000,300]" [labels]="true">
 </ngx-charts-pie-chart>
-<br><br><br><br><br><br> <br><br>
+<br><br><br><br><br><br> <br><br><br>
 
 <ngx-charts-pie-grid [results]="expense" [view]="[700,200]" class="forgrid"></ngx-charts-pie-grid>
+</div>
+</div>
+</div>
