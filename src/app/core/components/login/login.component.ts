@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginRequest } from 'src/app/shared/models/LoginRequest';
+import Swal from 'sweetalert2';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -36,15 +37,36 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', res.token);
           this.router.navigate(['products']);
         } else {
-          alert('Server Error!');
+          Swal.fire({
+            title: 'Error',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          }).then((result) => {
+            if (result.isConfirmed) {
+            }
+          })
         }
       },
       (e) => {
         if (e.error instanceof ProgressEvent) {
           console.log(e);
-          alert('An error occurred!');
+          Swal.fire({
+            title: 'Error',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          }).then((result) => {
+            if (result.isConfirmed) {
+            }
+          })
         } else {
-          alert(e.error.message);
+          Swal.fire({
+            title: 'Error',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          }).then((result) => {
+            if (result.isConfirmed) {
+            }
+          })
         }
       }
     );

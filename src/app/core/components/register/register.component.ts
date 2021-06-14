@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterRequest } from 'src/app/shared/models/RegisterRequest';
+import Swal from 'sweetalert2';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -45,13 +46,35 @@ export class RegisterComponent implements OnInit {
     );
 
     this.userService.register(regReq).subscribe(res => {
-      alert("Successfully registered")
-      this.router.navigate(['/login']);
+      Swal.fire({
+        title: 'Successfully Registered!',
+        text: 'Please Log In',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['/login']);
+        }
+      })
     }, e => {
       if (e.error instanceof ProgressEvent) {
-        alert('An error occurred!');
+        Swal.fire({
+          title: 'Error',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+          if (result.isConfirmed) {
+          }
+        })
       } else {
-        alert(e.error.message);
+        Swal.fire({
+          title: 'Error',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+          if (result.isConfirmed) {
+          }
+        })
       }
     });
   }
