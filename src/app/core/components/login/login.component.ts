@@ -11,7 +11,8 @@ import { UserService } from '../../services/user.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) { 
+  }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({

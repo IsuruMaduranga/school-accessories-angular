@@ -8,6 +8,7 @@ import { OrderPurchaseService } from 'src/app/shared/services/order-purchase.ser
 import { Order } from 'src/app/shared/models/order';
 import {ShoppingCart} from "../../shared/models/shopping-cart";
 import {ProfileLoaderService} from "../../shared/services/profile-loader.service";
+import {UserService} from "../../core/services/user.service";
 
 @Component({
   selector: 'app-shopping-form',
@@ -20,7 +21,7 @@ export class ShoppingFormComponent implements OnInit {
   order_id:number;
 
   order: Order = {
-    customer_id: 0,
+    customerId: 0,
     name: '',
     mobile_number: '',
     email: '',
@@ -66,7 +67,8 @@ export class ShoppingFormComponent implements OnInit {
     private router: Router,
     private shoppingCartService: ShoppingCartService,
     private orderPurchaseService: OrderPurchaseService,
-    private profileLoaderService:ProfileLoaderService
+    private profileLoaderService:ProfileLoaderService,
+    private userService: UserService
   ) {
   }
 
@@ -93,9 +95,9 @@ export class ShoppingFormComponent implements OnInit {
       cardType: new FormControl(),
     });
 
-    this.profileLoaderService.getUserID("customer1@gmail.com").subscribe((response)=>{
+    this.profileLoaderService.getUserID(this.userService.email).subscribe((response)=>{
       console.log(response);
-      this.order.customer_id=response.user_id;
+      this.order.customerId=response.user_id;
     });
   }
 
